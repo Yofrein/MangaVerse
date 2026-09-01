@@ -1,0 +1,19 @@
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 10;
+}
+
+.nav-links a {
+    color: rgb(235, 231, 231);
+    text-decoration: none;
+    font-family: consolas;
+    font-size: large;;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: brown;
+}
