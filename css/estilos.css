@@ -1,22 +1,9 @@
 @import url(menu.css);
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: Consolas, Helvetica, sans-serif;
+@font-face {
+    font-family: 'Font1';
+    src: url('fonts/Font1.otf') format('truetype');
 }
-
-body {
-    background-color: rgb(29, 28, 28)
-}
-.header {
-    background-color: rgb(216, 216, 216);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-}
-
 
 .logo {
     height: 120px;
@@ -25,10 +12,19 @@ body {
     max-width:  100%;
     display: block;
 
-    margin-left: -8px;
-    margin-top: -10px;
+    margin-left: -35px;
+    margin-top: -20px;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Font1', consolas;
+}
+
+body {
+    background-color: rgb(29, 28, 28)
+}
 
 .metricas{
     display: flex;
