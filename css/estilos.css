@@ -15,7 +15,6 @@ body {
     padding: 15px 30px;
 }
 
-
 .logo {
     height: 120px;
     width: auto;
@@ -27,10 +26,48 @@ body {
     margin-top: -10px;
 }
 
-
 .metricas{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 15px;
 }
+
+.quienes-somos {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    color: rgb(216, 216, 216);
+}
+
+.quienes-somos h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tarjetas {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.tarjetas-creadores {
+    background-color: rgb(104, 92, 92);
+    color: teal;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.tarjetas-creadores img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
