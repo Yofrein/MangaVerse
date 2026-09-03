@@ -1,19 +1,64 @@
+@import url(estilos.css);
+
+@font-face {
+    font-family: 'Font1';
+    src: url('fonts/Font1.otf') format('truetype');
+}
+
+
+
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 10;
+    gap: 5px;
+    background-color: black;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 100px;
 }
 
 .nav-links a {
     color: rgb(235, 231, 231);
     text-decoration: none;
-    font-family: consolas;
-    font-size: large;;
+    font-family: 'Font1', consolas;
+    font-size: 150%;
     font-weight: bold;
     transition: color 0.3s;
 }
 
+
+
 .nav-links a:hover {
-    color: brown;
+    color: rgb(128, 44, 206);
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: rgb(128, 44, 206);
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: bisque;
+    font-family: 'Font1', consolas;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 90%;
+}
+
+.search-input::placeholder {
+    color: black;
+}
+
+.search-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 100%;
 }
