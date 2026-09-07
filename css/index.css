@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'Font1';
+    src: url('../fonts/Font1.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*----------------------- Zona superior Manga del Mes -----------------------*/
+
+.mangas-nuevos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(49, 49, 49);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.mangas-nuevos span {
+    font-family: 'Font1', consolas;
+    color: rgb(255, 255, 255);
+    font-size: 300%;
+    font-weight: bold;
+}
+
+.seccion-mangas-nuevos {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgb(100, 100, 100);
+    padding: 40px 20px;
+}
+
+.recuadro {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.recuadro-mangas {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.recuadro-mangas img {
+    width: 288px;
+    height: 432px;
+    border-radius: 50%;
+    border-radius: 10px;
+}
+
+.anadir-carrito {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(49, 49, 49);
+    color: white;
+    padding: 10px 1px;
+    border-radius: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+}
