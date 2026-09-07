@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: 'Font1';
-    src: url('fonts/Font1.otf') format('truetype');
+    src: url('../fonts/Font1.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-
-
-
+/*----------------------- Barra parte izquierda -----------------------*/
 .nav-links {
     list-style: none;
     display: flex;
@@ -19,19 +19,57 @@
 }
 
 .nav-links a {
-    color: rgb(235, 231, 231);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-family: 'Font1', consolas;
-    font-size: 150%;
+    font-size: 180%;
     font-weight: bold;
-    transition: color 0.3s;
 }
-
-
 
 .nav-links a:hover {
     color: rgb(128, 44, 206);
 }
+
+/*----------------------- Barra parte derecha -----------------------*/
+
+.nav-links-right {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.nav-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 0 auto 4px;
+    filter: invert(100%);
+}
+
+.nav-links-right span {
+    font-family: 'Font1', consolas;
+    font-size: 85%;
+    font-weight: bold;
+}
+
+.nav-links-right:hover {
+    color: rgb(128, 44, 206) !important;
+}
+
+.nav-links-right:hover .nav-icon {
+    filter: invert(26%) sepia(85%) saturate(3451%) hue-rotate(262deg) brightness(89%) contrast(96%) !important;
+    transform: translateY(-3px);;
+}
+
+/*----------------------- Buscador -----------------------*/
 
 .search-box {
     display: flex;
@@ -45,11 +83,11 @@
     background: transparent;
     border: none;
     outline: none;
-    color: bisque;
+    color: rgb(0, 0, 0);
     font-family: 'Font1', consolas;
     font-weight: bold;
     padding: 5px;
-    font-size: 90%;
+    font-size: 130%;
 }
 
 .search-input::placeholder {
@@ -57,8 +95,10 @@
 }
 
 .search-btn {
+    width: 30px;
+    height: 30px;
     background: transparent;
     border: none;
     cursor: pointer;
-    font-size: 100%;
+    font-size: 50%;
 }
