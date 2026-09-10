@@ -1,0 +1,100 @@
+/*----------------------- Vista de Login Dividida -----------------------*/
+
+.login-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(100, 100, 100);
+    padding: 40px 20px;
+    min-height: calc(100vh - 120px);
+}
+
+.login-box {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1300px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Columna Izquierda: Imagen decorativa */
+.login-imagen {
+    flex: 1;
+    background-color: rgb(49, 49, 49);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-imagen img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Columna Derecha: Formulario */
+.login-formulario {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+}
+
+.login-formulario h2 {
+    font-size: 220%;
+    margin-bottom: 10px;
+}
+
+.login-formulario p {
+    font-size: 90%;
+    color: rgb(80, 80, 80);
+    margin-bottom: 25px;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.campo-grupo label {
+    font-size: 90%;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: rgb(49, 49, 49);
+}
+
+.campo-grupo input {
+    padding: 10px;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 5px;
+    font-size: 100%;
+    outline: none;
+}
+
+.campo-grupo input:focus {
+    border-color: rgb(128, 44, 206);
+}
+
+.btn-login {
+    background-color: rgb(49, 49, 49);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 110%;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: rgb(128, 44, 206);
+}

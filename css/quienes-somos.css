@@ -1,0 +1,83 @@
+/*----------------------- Encabezado de Sección -----------------------*/
+
+.titulo-seccion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(49, 49, 49);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.titulo-seccion span {
+    font-family: 'Font1', consolas;
+    color: rgb(255, 255, 255);
+    font-size: 300%;
+    font-weight: bold;
+}
+
+/*----------------------- Contenido Principal -----------------------*/
+
+.seccion-quienes-somos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(100, 100, 100);
+    padding: 40px 20px;
+    gap: 30px;
+}
+
+.bloque-info {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 25px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 900px;
+}
+
+.bloque-info h2 {
+    font-size: 180%;
+    margin-bottom: 10px;
+}
+
+.bloque-info p {
+    font-size: 110%;
+    line-height: 1.5;
+}
+
+/*----------------------- Sección Integrantes -----------------------*/
+
+.tarjetas {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.tarjetas-creadores {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 220px;
+}
+
+.tarjetas-creadores img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.tarjetas-creadores h4 {
+    font-size: 130%;
+    margin-bottom: 5px;
+}
+
+.tarjetas-creadores p {
+    font-size: 100%;
+    color: rgb(60, 60, 60);
+}
