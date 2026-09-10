@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - MangaVerse</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <link rel="icon" type="image/x-icon" href="img/Logo2.png">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <img src="img/Logo.png" alt="MangaVerse" class="logo" />
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="quienes-somos.html">Quienes somos</a></li>
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar manga..." class="search-input">
+                    <button type="submit" class="search-btn">
+                        <img src="img/Buscador.png" alt="Buscar" class="search-btn">
+                    </button>
+                </div>
+                <li>
+                    <a href="carrito.html" class="nav-links-right">
+                        <img src="img/Carrito.png" alt="Carrito" class="nav-icon">
+                        <span>Carrito</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="login.html" class="nav-links-right">
+                        <img src="img/User.png" alt="Mi cuenta" class="nav-icon">
+                        <span>Mi cuenta</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1 class="mangas-nuevos">
+                <span>Contáctanos</span>
+            </h1>
+            <p style="text-align: center; color: white; margin-bottom: 20px;">
+                ¿Tienes dudas o sugerencias? Envíanos un mensaje y te responderemos a la brevedad.
+            </p>
+        </section>
+
+        <!-- Formulario de contacto -->
+        <section class="contenedor-quienes-somos">
+            <form action="" method="post" onsubmit="return validacionFormulario()">
+                <table border="1"
+                    style="margin: 0 auto; color: white; background-color: rgb(0, 0, 0); padding: 20px; border-radius: 10px;">
+                    <tr>
+                        <td>Correo:</td>
+                        <td>
+                            <input type="email" id="txtEmail" required placeholder="ingrese email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Asunto:</td>
+                        <td>
+                            <input type="text" id="txtAsunto" minlength="3" required placeholder="ingrese asunto">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mensaje:</td>
+                        <td>
+                            <textarea id="txtMensaje" cols="30" rows="5" required minlength="5"
+                                placeholder="Escriba su mensaje..."></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Edad:</td>
+                        <td>
+                            <input type="number" id="txtEdad" min="1" max="120" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sexo:</td>
+                        <td>
+                            <select id="cboSexo" required>
+                                <option value="" selected>Seleccione...</option>
+                                <option value="M">Masculino</option>
+                                <option value="H">Femenino</option>
+                                <option value="O">Otro</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center; padding-top: 15px;">
+                            <input type="reset" value="Limpiar">
+                            <input type="submit" value="Enviar">
+                            <input type="button" value="Listar" onclick="listar()">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="footer-superior">
+                <img src="img/Logo.png" alt="MangaVerse" class="logo-footer">
+                <ul class="footer-nav">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catalogo</a></li>
+                    <li><a href="quienes-somos.html">Quienes somos</a></li>
+                    <li><a href="login.html">Mi cuenta</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="linea-div-footer">
+        <div class="footer-inferior">
+            <p>© 2026 MangaVerse. Todos los derechos reservados.</p>
+            <p class="frase-footer">Acercando la pasión del manga a todo Santiago</p>
+        </div>
+    </footer>
+
+    <script src="js/contacto.js"></script>
+</body>
+
+</html>
