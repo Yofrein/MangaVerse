@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device, initial-scale=1.0" />
+    <title>MangaVerse - Mi Cuenta</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/quienes-somos.css">
+
+    <!-- Icono de página -->
+    <link rel="icon" type="image/x-icon" href="img/Logo2.png">
+</head>
+
+<body>
+    <script>
+        // Protección de ruta: Si no hay usuario, redirigir al login antes de cargar el HTML
+        if (!localStorage.getItem('usuarioMangaVerse')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <header>
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <ul class="nav-links">
+                <img src="img/Logo.png" alt="MangaVerse" class="logo" />
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="quienes-somos.html">Quienes somos</a></li>
+
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar manga..." class="search-input">
+                    <button type="submit" class="search-btn">
+                        <img src="img/Buscador.png" alt="Buscar" class="search-btn">
+                    </button>
+                </div>
+
+                <li>
+                    <a href="carrito.html" class="nav-links-right">
+                        <img src="img/Carrito.png" alt="Carrito" class="nav-icon">
+                        <span>Carrito</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mi-cuenta.html" class="nav-links-right">
+                        <img src="img/User.png" alt="Mi cuenta" class="nav-icon">
+                        <span>Mi cuenta</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Encabezado de la página -->
+        <section>
+            <h1 class="titulo-seccion">
+                <span>Mi Cuenta</span>
+            </h1>
+        </section>
+
+        <!-- Bloque del Perfil del Usuario -->
+        <section class="seccion-quienes-somos">
+            <div class="bloque-info" style="text-align: center;">
+                <img src="img/Logo2.png" alt="Avatar"
+                    style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid rgb(49, 49, 49);">
+
+                <h2>¡Bienvenido de nuevo!</h2>
+                <p style="font-size: 140%; font-weight: bold; color: rgb(128, 44, 206);" id="nombre-usuario-display">
+                </p>
+                <p>Estado de la cuenta: <strong>Estudiante Activo</strong></p>
+
+                <br>
+                <button id="btn-cerrar-sesion" class="anadir-carrito" style="max-width: 200px; margin: 0 auto;">Cerrar
+                    Sesión</button>
+            </div>
+        </section>
+    </header>
+
+    <!-- Carga del script JS separado -->
+    <script src="js/main.js"></script>
+
+    <script>
+        // Colocar el nombre del usuario guardado en pantalla
+        document.getElementById('nombre-usuario-display').textContent = localStorage.getItem('usuarioMangaVerse');
+    </script>
+</body>
+<footer>
+    <div class="contenedor-footer">
+
+        <div class="footer-superior">
+
+            <img src="img/logo.png" alt="" class="logo-footer">
+
+            <ul class="footer-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="quienes-somos.html">Quienes somos</a></li>
+                <li><a href="mi-cuenta.html">Mi cuenta</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Las cosas de abajo del slogan y copiright y ñes -->
+    <hr class="linea-div-footer">
+    <div class="footer-inferior">
+        <p>© 2026 MangaVerse. Todos los derechos reservados.</p>
+        <p class="frase-footer">Acercando la pasión del manga a todo Santiago</p>
+    </div>
+</footer>
+
+</html>

@@ -1,76 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device, initial-scale=1.0"/>
-        <title>MangaVerse</title>
-        <link rel="stylesheet" href="css/estilos.css">
-        
-        <!-- Icono de página -->
-        <link rel="icon" type="image/x-icon" href="img/Logo2.png">
 
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device, initial-scale=1.0" />
+    <title>MangaVerse - Quiénes Somos</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/quienes-somos.css">
 
-    <body>
-        <header>
-            <!-- Titulo de página -->
-            <a href="index.html" class="logo">
-            <img src="img/Logo.png" alt="" class="logo"/>
-            </a>
+    <!-- Icono de página -->
+    <link rel="icon" type="image/x-icon" href="img/Logo2.png">
+</head>
 
-            <nav class="navbar">
-                <ul class="nav-links">
-                    <li> <a href="index.html">Inicio</a></li>
-                    <li> <a href="catalogo.html">Catalogo</a></li>
-                    <li> <a href="quienes-somos.html">Quienes somos</a></li>
-                    <li> <a href="carrito.html">Carrito</a></li>
-                    <li> <a href="mi-cuenta.html">Mi cuenta</a></li>
-                </ul>
-            </nav>
+<body>
+    <header>
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <ul class="nav-links">
+                <img src="img/Logo.png" alt="#" class="logo" />
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="quienes-somos.html">Quienes somos</a></li>
 
-            <main>
-                <section class="quienes-somos">
-                    <h1>Quienes somos</h1>
-                    <p>Somos un grupo de estudiantes de DUOC UC, apasionados por el mundo del manga y el anime. Nuestro objetivo es crear una plataforma en línea que permita a los fanáticos del manga y el anime descubrir, explorar y adquirir sus obras favoritas de manera fácil y segura.</p>
-                    <p>En MangaVerse, nos esforzamos por ofrecer una experiencia única a nuestros usuarios, brindando un catálogo diverso y actualizado de mangas y animes. Nos enorgullece ser parte de la comunidad de fans del manga y el anime, y estamos comprometidos en proporcionar un espacio donde puedan compartir su pasión.</p>
-                </section>
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar manga..." class="search-input">
+                    <button type="submit" class="search-btn">
+                        <img src="img/Buscador.png" alt="#" class="search-btn">
+                    </button>
+                </div>
 
-                <section class="quienes-somos">
-                    <h1>Nuestra misión</h1>
-                    <p>Nuestro objetivo es poder facilitar la distribución y alcance del entretenimiento del manga a lo largo de todo Santiago, conectando con distintos usuarios para poder cumplir el deseo del entretenimiento en la lectura del manga en físico. </p>
-                </section>
-                
-                <section class="quienes-somos">
-                    <h1>Nuestra visión</h1>
-                    <p>Nuestra visión es poder ser la tienda N° 1 en distribución ágil, eficiente y accesible para los usuarios a nivel regional, buscando expandir nuestros horizontes más allá de la ciudad, pudiendo expandirnos a más lugares del país, para poder conectar a más usuarios con este hermoso medio de entretenimiento.</p>
-                </section>
-                
-                <!-- Muestra de los creadores -->
-                 <section>
-                    <div class="tarjetas">
+                <li>
+                    <a href="carrito.html" class="nav-links-right">
+                        <img src="img/Carrito.png" alt="Carrito" class="nav-icon">
+                        <span>Carrito</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mi-cuenta.html" class="nav-links-right">
+                        <img src="img/User.png" alt="Mi cuenta" class="nav-icon">
+                        <span>Mi cuenta</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-                    <div class="tarjetas-creadores">
-                        <img src="img/Jean.jpeg" alt="">
-                        <h4>JeanToFranku Guerrero</h4>
-                        <p>Desarrollador y diseñador</p>
-                    </div>
+        <!-- Titulo superior al estilo index -->
+        <section>
+            <h1 class="titulo-seccion">
+                <span>Quiénes somos</span>
+            </h1>
+        </section>
 
-                    <div class="tarjetas-creadores">
-                        <img src="img/Cristo.jpeg" alt="">
-                        <h4>Cristito Rojas</h4>
-                        <p>Desarrollador y diseñador</p>
-                    </div>
+        <!-- Contenido en bloque gris idéntico al fondo de productos -->
+        <section class="seccion-quienes-somos">
 
-                    <div class="tarjetas-creadores">
-                        <img src="img/Alex.jpg" alt="">
-                        <h4>Alexander chan Misetich</h4>
-                        <p>Desarrollador y diseñador</p>
-                    </div>
+            <div class="bloque-info">
+                <h2>Sobre MangaVerse</h2>
+                <p>Somos un grupo de estudiantes de DUOC UC, apasionados por el mundo del manga y el anime. Nuestro
+                    objetivo es crear una plataforma en línea que permita a los fanáticos del manga y el anime
+                    descubrir, explorar y adquirir sus obras favoritas de manera fácil y segura.</p>
+                <br>
+                <p>En MangaVerse, nos esforzamos por ofrecer una experiencia única a nuestros usuarios, brindando un
+                    catálogo diverso y actualizado de mangas y animes. Nos enorgullece ser parte de la comunidad de fans
+                    y estamos comprometidos en proporcionar un espacio donde puedan compartir su pasión.</p>
+            </div>
 
-                    </div>
-                 </section>
-            </main>
-        </header>
-    </body>
+            <div class="bloque-info">
+                <h2>Nuestra misión</h2>
+                <p>Nuestro objetivo es poder facilitar la distribución y alcance del entretenimiento del manga a lo
+                    largo de todo Santiago, conectando con distintos usuarios para poder cumplir el deseo del
+                    entretenimiento en la lectura del manga en físico.</p>
+            </div>
+
+            <div class="bloque-info">
+                <h2>Nuestra visión</h2>
+                <p>Nuestra visión es poder ser la tienda N° 1 en distribución ágil, eficiente y accesible para los
+                    usuarios a nivel regional, buscando expandir nuestros horizontes más allá de la ciudad, pudiendo
+                    expandirnos a más lugares del país, para poder conectar a más usuarios con este hermoso medio de
+                    entretenimiento.</p>
+            </div>
+
+            <!-- Tarjetas de creadores en el mismo formato de recuadros -->
+            <div class="tarjetas">
+                <div class="tarjetas-creadores">
+                    <img src="img/Jean.jpeg" alt="Jean">
+                    <h4>JeanToFranku Guerrero</h4>
+                    <p>Desarrollador y diseñador</p>
+                </div>
+
+                <div class="tarjetas-creadores">
+                    <img src="img/Cristo.jpeg" alt="Cristo">
+                    <h4>Cristito OWO Rojas</h4>
+                    <p>Desarrollador y diseñador</p>
+                </div>
+
+                <div class="tarjetas-creadores">
+                    <img src="img/Alex.jpg" alt="Alex">
+                    <h4>Alexander chan Misetich</h4>
+                    <p>Desarrollador y diseñador</p>
+                </div>
+            </div>
+
+        </section>
+    </header>
+    <script src="js/main.js"></script>
+</body>
+<footer>
+    <div class="contenedor-footer">
+
+        <div class="footer-superior">
+
+            <img src="img/logo.png" alt="" class="logo-footer">
+
+            <ul class="footer-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="quienes-somos.html">Quienes somos</a></li>
+                <li><a href="mi-cuenta.html">Mi cuenta</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Las cosas de abajo del slogan y copiright y ñes -->
+    <hr class="linea-div-footer">
+    <div class="footer-inferior">
+        <p>© 2026 MangaVerse. Todos los derechos reservados.</p>
+        <p class="frase-footer">Acercando la pasión del manga a todo Santiago</p>
+    </div>
+</footer>
 
 </html>
