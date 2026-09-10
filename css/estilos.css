@@ -1,20 +1,30 @@
-@import url("catalogo.css");
 @import url("menu.css");
+@import url("carrito.css");
+@import url("index.css");
+@import url("login.css");
+@import url("cabecera.css");
+@import url("quienes somos.css");
+@import url("catalogo.css");
+@import url("pie.css");
 
 @font-face {
     font-family: 'Font1';
-    src: url('fonts/Font1.otf') format('truetype');
+    src: url('../fonts/Font1.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
 }
 
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Font1';
+    font-family: 'Font1', Consolas, sans-serif;
 }
 
 body {
-    background-color: rgb(29, 28, 28)
+    background-color: rgb(29, 28, 28);
 }
+
 .header {
     background-color: rgb(216, 216, 216);
     display: flex;
@@ -26,57 +36,15 @@ body {
 .logo {
     height: 170px;
     width: auto;
-
-    max-width:  100%;
+    max-width: 100%;
     display: block;
-
-    margin-left: px;
     margin-top: -40px;
     margin-bottom: -20px;
 }
 
-.metricas{
+.metricas {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 15px;
 }
-
-.quienes-somos {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 15px;
-    color: rgb(216, 216, 216);
-}
-
-.quienes-somos h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.tarjetas {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.tarjetas-creadores {
-    background-color: rgb(104, 92, 92);
-    color: teal;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.tarjetas-creadores img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-}
-

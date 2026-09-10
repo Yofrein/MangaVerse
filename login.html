@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device, initial-scale=1.0" />
+    <title>MangaVerse - Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <!-- Icono de página -->
+    <link rel="icon" type="image/x-icon" href="img/Logo2.png">
+</head>
+
+<body>
+    <header>
+        <!-- Barra de navegación idéntica a las demás páginas -->
+        <nav class="navbar">
+            <ul class="nav-links">
+                <img src="img/Logo.png" alt="MangaVerse" class="logo" />
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="quienes-somos.html">Quienes somos</a></li>
+
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar manga..." class="search-input">
+                    <button type="submit" class="search-btn">
+                        <img src="img/Buscador.png" alt="Buscar" class="search-btn">
+                    </button>
+                </div>
+
+                <li>
+                    <a href="carrito.html" class="nav-links-right">
+                        <img src="img/Carrito.png" alt="Carrito" class="nav-icon">
+                        <span>Carrito</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="login.html" class="nav-links-right">
+                        <img src="img/User.png" alt="Mi cuenta" class="nav-icon">
+                        <span>Mi cuenta</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-contenedor">
+        <div class="login-box">
+            <!-- Columna Izquierda: Imagen del Logo/Manga -->
+            <div class="login-imagen">
+                <img src="img/Logo.png" alt="MangaVerse Logo">
+            </div>
+
+            <!-- Columna Derecha: Formulario de Login -->
+            <div class="login-formulario">
+                <h2>Iniciar Sesión</h2>
+                <p>Ingresa tus datos para acceder a tu cuenta de MangaVerse</p>
+
+                <form id="form-login">
+                    <div class="campo-grupo">
+                        <label for="usuario">Nombre de usuario</label>
+                        <input type="text" id="usuario" placeholder="Ej: JeanToFranku" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn-login">Ingresar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lógica simple para simular el inicio de sesión -->
+    <script>
+        document.getElementById('form-login').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Obtener el valor del nombre de usuario
+            const nombreUsuario = document.getElementById('usuario').value;
+
+            // Guardar en el almacenamiento local del navegador
+            localStorage.setItem('usuarioMangaVerse', nombreUsuario);
+
+            // Redirigir a la página de Mi Cuenta
+            window.location.href = 'mi-cuenta.html';
+        });
+    </script>
+</body>
+<footer>
+    <div class="contenedor-footer">
+
+        <div class="footer-superior">
+
+            <img src="img/logo.png" alt="" class="logo-footer">
+
+            <ul class="footer-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="quienes-somos.html">Quienes somos</a></li>
+                <li><a href="mi-cuenta.html">Mi cuenta</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Las cosas de abajo del slogan y copiright y ñes -->
+    <hr class="linea-div-footer">
+    <div class="footer-inferior">
+        <p>© 2026 MangaVerse. Todos los derechos reservados.</p>
+        <p class="frase-footer">Acercando la pasión del manga a todo Santiago</p>
+    </div>
+</footer>
+
+</html>
