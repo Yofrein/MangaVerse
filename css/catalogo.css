@@ -1,31 +1,91 @@
-.catalogo{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 25px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-.card-manga{
-    background-color: #1f1f1f;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    text-align: center;
-}
-.card-manga:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-.card-manga img{
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
+/*----------------------- Encabezado de Sección -----------------------*/
+
+.titulo-seccion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(49, 49, 49);
+    padding: 20px;
+    margin-top: 20px;
 }
 
-.card-manga h3{
-    color: #ffffff;
-    font-size: 1rem;
+.titulo-seccion span {
+    font-family: 'Font1', consolas;
+    color: rgb(255, 255, 255);
+    font-size: 300%;
+    font-weight: bold;
+}
+
+/*----------------------- Contenedor Gris del Catálogo -----------------------*/
+
+.seccion-catalogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(100, 100, 100);
+    padding: 40px 20px;
+    min-height: calc(100vh - 200px);
+}
+
+.catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    width: 90%;
+    max-width: 1100px;
+}
+
+/*----------------------- Tarjetas de Mangas -----------------------*/
+
+.card-manga {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-manga img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.card-manga h3 {
+    font-size: 130%;
+    margin-bottom: 8px;
+    color: rgb(0, 0, 0);
+}
+
+.card-manga .precio {
+    font-size: 120%;
+    font-weight: bold;
+    color: rgb(49, 49, 49);
+    margin-bottom: 12px;
+}
+
+.btn-comprar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(49, 49, 49);
+    color: white;
     padding: 10px;
-    margin: 0;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 100%;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-comprar:hover {
+    background-color: rgb(128, 44, 206);
 }

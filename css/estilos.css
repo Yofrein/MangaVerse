@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-
 @import url("catalogo.css");
 @import url("menu.css");
-*
-{
-=======
-@import url(menu.css);
 
 @font-face {
     font-family: 'Font1';
@@ -13,7 +7,6 @@
 }
 
 * {
->>>>>>> 958c3d21d679a4721a5f7d193184fd49189664af
     margin: 0;
     padding: 0;
     font-family: 'Font1';
