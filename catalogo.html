@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device, initial-scale=1.0" />
-    <title>MangaVerse - Catálogo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo</title>
+
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/catalogo.css">
@@ -14,8 +15,8 @@
 </head>
 
 <body>
+
     <header>
-        <!-- Barra de navegación idéntica -->
         <nav class="navbar">
             <ul class="nav-links">
                 <img src="img/Logo.png" alt="MangaVerse" class="logo" />
@@ -45,78 +46,176 @@
             </ul>
         </nav>
 
-        <!-- Titulo superior -->
         <section>
             <h1 class="titulo-seccion">
-                <span>Catálogo Completo</span>
+                <span>Catálogo</span>
             </h1>
-        </section>
-
-        <!-- Grilla del Catálogo -->
-        <section class="seccion-catalogo">
-            <div class="catalogo-grid">
-
-                <div class="card-manga">
-                    <img src="img/Manga.png" alt="Manga">
-                    <h3>Golden Kamuy Vol. 1</h3>
-                    <p class="precio">$10.000</p>
-                    <button class="btn-comprar">Añadir al carrito</button>
-                </div>
-
-                <div class="card-manga">
-                    <img src="img/Manga.png" alt="Manga">
-                    <h3>Jujutsu Kaisen Vol. 1</h3>
-                    <p class="precio">$10.000</p>
-                    <button class="btn-comprar">Añadir al carrito</button>
-                </div>
-
-                <div class="card-manga">
-                    <img src="img/Manga.png" alt="Manga">
-                    <h3>Chainsaw Man Vol. 1</h3>
-                    <p class="precio">$10.000</p>
-                    <button class="btn-comprar">Añadir al carrito</button>
-                </div>
-
-                <div class="card-manga">
-                    <img src="img/Manga.png" alt="Manga">
-                    <h3>Undead Unluck Vol. 1</h3>
-                    <p class="precio">$10.000</p>
-                    <button class="btn-comprar">Añadir al carrito</button>
-                </div>
-
-            </div>
         </section>
     </header>
 
-    <!-- Script para la gestión del usuario -->
-    <script src="js/main.js"></script>
-</body>
+    <main class="seccion-catalogo">
+        <div class="contenedor-catalogo">
 
-<footer>
-    <div class="contenedor-footer">
+            <!--Filtros-->
+            <section class="panel-filtros">
+                <h1>Filtros</h1>
 
-        <div class="footer-superior">
+                <td class="panel-filtros">
 
-            <img src="img/logo.png" alt="" class="logo-footer">
+                    <div class="grupo-filtro">
+                        <h2>Genero</h2>
+                        <select id="cboGenero" class="desplegable-filtro">
+                            <option value="">Todos los géneros</option>
+                            <option value="shonen">Shonen</option>
+                            <option value="seinen">Seinen</option>
+                            <option value="shojo">Shojo</option>
+                            <option value="romance">Romance</option>
+                            <option value="terror">Terror</option>
+                        </select>
+                    </div>
 
-            <ul class="footer-nav">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catalogo</a></li>
-                <li><a href="quienes-somos.html">Quienes somos</a></li>
-                <li><a href="mi-cuenta.html">Mi cuenta</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
+                    <div class="grupo-filtro">
+                        <h2>Editorial</h2>
+                        <select id="cboEditorial" class="desplegable-filtro">
+                            <option value="">Todas las editoriales</option>
+                            <option value="ivrea">Ivrea</option>
+                            <option value="panini">Panini Manga</option>
+                            <option value="norma">Norma Editorial</option>
+                            <option value="ovni">Ovni Press</option>
+                            <option value="distrito">Distrito Manga</option>
+                            <option value="milkyway">Milky Way Ediciones</option>
+                            <option value="planeta">Planeta Cómic</option>
+                            <option value="vIZ">Viz Media</option>
+                            <option value="arechi">Arechi Manga</option>
+                            <option value="satori">Satori Ediciones</option>
+                        </select>
+                    </div>
 
+                    <div class="grupo-filtro">
+                        <h2>Rango de Precio</h2>
+                        <select id="cboPrecio" class="desplegable-filtro">
+                            <option value="">Todos los precios</option>
+                            <option value="0-10000">Hasta $10.000</option>
+                            <option value="10000-20000">$10.000 - $20.000</option>
+                            <option value="20000-30000">$20.000 - $30.000</option>
+                            <option value="30000-40000">$30.000 - $40.000</option>
+                            <option value="40000-50000">$40.000 - $50.000</option>
+                            <option value="50000-70000">$50.000 - $70.000</option>
+                            <option value="70000-100000">$70.000 - $100.000</option>
+                            <option value="100000+">Más de $100.000</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-filtro">
+                        <h2>Autor</h2>
+                        <select id="cboAutor" class="desplegable-filtro">
+                            <option value="">Todos los autores</option>
+                            <option value="kentaro-miura">Kentaro Miura (Berserk)</option>
+                            <option value="muneyuki-kaneshiro">Muneyuki Kaneshiro (Blue Lock)</option>
+                            <option value="tsubasa-yamaguchi">Tsubasa Yamaguchi (Blue Period)</option>
+                            <option value="tatsuki-fujimoto">Tatsuki Fujimoto (Chainsaw Man)</option>
+                            <option value="koyoharu-gotouge">Koyoharu Gotouge (Demon Slayer)</option>
+                            <option value="satoru-noda">Satoru Noda (Golden Kamuy)</option>
+                            <option value="rumiko-takahashi">Rumiko Takahashi (Inuyasha)</option>
+                            <option value="gege-akutami">Gege Akutami (Jujutsu Kaisen)</option>
+                            <option value="hajime-komoto">Hajime Komoto (Mashle)</option>
+                            <option value="kohei-horikoshi">Kohei Horikoshi (My Hero Academia)</option>
+                            <option value="eiichiro-oda">Eiichiro Oda (One Piece)</option>
+                            <option value="nobuhiro-watsuki">Nobuhiro Watsuki (Rurouni Kenshin)</option>
+                            <option value="masami-kurumada">Masami Kurumada (Saint Seiya)</option>
+                            <option value="hajime-isayama">Hajime Isayama (Shingeki no Kyojin)</option>
+                        </select>
+                    </div>
+
+                </td>
+
+            </section>
+
+            <section class="catalogo-grid">
+
+                <div class="card-manga">
+                    <img src="img/Mangas/Golden kamuy 01.png" alt="Manga">
+                    <h3>Golden Kamuy 01</h3>
+                    <p class="precio">$10.000</p>
+                    <button class="anadir-carrito">Añadir al carrito</button>
+                </div>
+
+                <div class="card-manga">
+                    <img src="img/Mangas/Jujutsu kaisen 29.jpg" alt="Manga">
+                    <h3>Jujutsu Kaisen 29</h3>
+                    <p class="precio">$10.000</p>
+                    <button class="anadir-carrito">Añadir al carrito</button>
+                </div>
+
+                <div class="card-manga">
+                    <img src="img/Mangas/Chainsaw man 24.png" alt="Manga">
+                    <h3>Chainsaw Man 24</h3>
+                    <p class="precio">$10.000</p>
+                    <button class="anadir-carrito">Añadir al carrito</button>
+                </div>
+
+                <div class="card-manga">
+                    <img src="img/Mangas/One piece 59.jpg" alt="Manga">
+                    <h3>One piece 59</h3>
+                    <p class="precio">$10.000</p>
+                    <button class="anadir-carrito">Añadir al carrito</button>
+                </div>
+
+                <div class="card-manga">
+                    <img src="img/Mangas/Inuyasha 25.jpg" alt="Manga">
+                    <h3>Inuyasha 25</h3>
+                    <p class="precio">$10.000</p>
+                    <button class="anadir-carrito">Añadir al carrito</button>
+                </div>
+
+                <div class="card-manga">
+                    <img src="img/Mangas/Berserk 01.jpg" alt="Manga">
+                    <h3>Berserk 01</h3>
+                    <p class="precio">$10.000</p>
+                    <button class="anadir-carrito">Añadir al carrito</button>
+                </div>
+
+                <div class="card-manga">
+                    <img src="img/Mangas/Blue lock 11.jpg" alt="Manga">
+                    <h3>Blue lock 11</h3>
+                    <p class="precio">$10.000</p>
+                    <button class="anadir-carrito">Añadir al carrito</button>
+                </div>
+
+                <div class="card-manga">
+                    <img src="img/Mangas/Mashle 17.jpg" alt="Manga">
+                    <h3>Mashle 17</h3>
+                    <p class="precio">$10.000</p>
+                    <button class="anadir-carrito">Añadir al carrito</button>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="footer-superior">
+                <img src="img/Logo.png" alt="Logo MangaVerse" class="logo-footer">
+                <ul class="footer-nav">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catalogo</a></li>
+                    <li><a href="quienes-somos.html">Quienes somos</a></li>
+                    <li><a href="login.html">Mi cuenta</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
         </div>
 
-    </div>
+        <hr class="linea-div-footer">
 
-    <!-- Las cosas de abajo del slogan y copiright y ñes -->
-    <hr class="linea-div-footer">
-    <div class="footer-inferior">
-        <p>© 2026 MangaVerse. Todos los derechos reservados.</p>
-        <p class="frase-footer">Acercando la pasión del manga a todo Santiago</p>
-    </div>
-</footer>
+        <div class="footer-inferior">
+            <p>© 2026 MangaVerse. Todos los derechos reservados.</p>
+            <p class="frase-footer">Acercando la pasión del manga a todo Santiago</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
 
 </html>

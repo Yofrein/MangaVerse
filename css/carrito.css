@@ -1,4 +1,4 @@
-/*----------------------- Encabezado de Sección -----------------------*/
+/*Encabezado*/
 
 .titulo-seccion {
     display: flex;
@@ -16,7 +16,7 @@
     font-weight: bold;
 }
 
-/*----------------------- Contenedor Gris Principal -----------------------*/
+/*Contenedor gris principal*/
 
 .seccion-carrito {
     display: flex;
@@ -35,7 +35,7 @@
     flex-wrap: wrap;
 }
 
-/*----------------------- Bloque Izquierdo: Tabla de Productos -----------------------*/
+/*Tabla de productos*/
 
 .carrito-tabla-box {
     flex: 2;
@@ -92,7 +92,7 @@
     background-color: rgb(150, 30, 30);
 }
 
-/*----------------------- Bloque Derecho: Resumen de Pago -----------------------*/
+/*Resumen de Pago*/
 
 .carrito-resumen-box {
     flex: 1;

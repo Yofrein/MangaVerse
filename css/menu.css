@@ -1,4 +1,4 @@
-/*----------------------- Barra parte izquierda -----------------------*/
+/*Barra parte izquierda*/
 .nav-links {
     list-style: none;
     display: flex;
@@ -21,7 +21,7 @@
     color: rgb(128, 44, 206);
 }
 
-/*----------------------- Barra parte derecha -----------------------*/
+/*Barra parte derecha*/
 
 .nav-links-right {
     display: inline-flex;
@@ -60,7 +60,7 @@
     transform: translateY(-3px);;
 }
 
-/*----------------------- Buscador -----------------------*/
+/*Buscador*/
 
 .search-box {
     display: flex;

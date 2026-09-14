@@ -1,4 +1,4 @@
-/*----------------------- Encabezado de Sección -----------------------*/
+/*Encabezado sección*/
 
 .titulo-seccion {
     display: flex;
@@ -16,7 +16,7 @@
     font-weight: bold;
 }
 
-/*----------------------- Contenido Principal -----------------------*/
+/*Contenido principal*/
 
 .seccion-quienes-somos {
     display: flex;
@@ -46,7 +46,7 @@
     line-height: 1.5;
 }
 
-/*----------------------- Sección Integrantes -----------------------*/
+/*Sección creadores*/
 
 .tarjetas {
     display: flex;

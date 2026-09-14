@@ -1,62 +1,156 @@
-/*----------------------- Zona superior Manga del Mes -----------------------*/
-
-.mangas-nuevos {
+/*Títulos oscuros con letras grandes*/
+.titulo-seccion {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(49, 49, 49);
+    background-color: #313131;
     padding: 20px;
     margin-top: 20px;
 }
 
-.mangas-nuevos span {
-    font-family: 'Font1', consolas;
-    color: rgb(255, 255, 255);
+.titulo-seccion span {
+    font-family: 'Font1', sans-serif;
+    color: white;
     font-size: 300%;
     font-weight: bold;
 }
 
+
+/*Mangas nuevos Tarjetas Blancas*/
 .seccion-mangas-nuevos {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: rgb(100, 100, 100);
+    background-color: #646464;
     padding: 40px 20px;
 }
 
-.recuadro {
+.contenedor-tarjetas {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .recuadro-mangas {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    padding: 20px;
+    background-color: white;
+    padding: 15px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3)
+    width: 220px;
 }
 
 .recuadro-mangas img {
-    width: 288px;
-    height: 432px;
-    border-radius: 50%;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 220px;
+    height: 300px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.recuadro-mangas h1 {
+    font-size: 18px;
+    margin: 8px 0 4px;
+}
+
+.recuadro-mangas h2 {
+    font-size: 16px;
+    color: #444;
+    margin: 0 0 10px;
 }
 
 .anadir-carrito {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(49, 49, 49);
+    background-color: #313131;
     color: white;
-    padding: 10px 1px;
-    border-radius: 15px;
-    margin-top: 10px;
-    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 8px;
     width: 100%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+
+/*Beneficios*/
+.metricas {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.metrica-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+}
+
+.metrica-imagen {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.metrica-item strong {
+    color: blueviolet;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.metrica-p {
+    color: white;
+    margin: 0;
+}
+
+
+/*Más vendido tarjetas*/
+.seccion-mangas-masvendidos {
+    background-color: #646464;
+    padding: 40px 20px;
+}
+
+.recuadro-masvendidos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.recuadro-mangas-masvendidos {
+    background-color: #ffffff;
+    padding: 12px 8px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.imagen-masvendido {
+    width: 120px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    display: center;
+}
+.recuadro-mangas-masvendidos h1 {
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    margin: 5px 0;
+}
+
+.recuadro-mangas-masvendidos h2 {
+    font-size: 14px;
+    color: #444444;
+    margin: 0 0 8px;
+}
+
+.anadir-carrito-chico {
+    background-color: #313131;
+    color: white;
+    font-size: 11px;
+    padding: 8px 0;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
 }
