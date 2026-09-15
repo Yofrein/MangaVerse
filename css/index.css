@@ -59,11 +59,16 @@
     background-color: #313131;
     color: white;
     border: none;
-    font-size: 14px;
+    font-size: 17px;
     padding: 8px;
     border-radius: 8px;
     width: 100%;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.anadir-carrito:hover {
+    background-color: rgb(128, 44, 206);
 }
 
 
@@ -90,7 +95,7 @@
 }
 
 .metrica-item strong {
-    color: blueviolet;
+    color: rgb(128, 44, 206);
     font-size: 24px;
     margin-bottom: 5px;
 }
@@ -145,7 +150,7 @@
 .anadir-carrito-chico {
     background-color: #313131;
     color: white;
-    font-size: 11px;
+    font-size: 15px;
     padding: 8px 0;
     border-radius: 8px;
     width: 100%;
@@ -153,4 +158,9 @@
     white-space: nowrap;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.anadir-carrito-chico:hover {
+    background-color: rgb(128, 44, 206);
 }
