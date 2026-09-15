@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacto - MangaVerse</title>
+    <title>MangaVerse - Contacto</title>
 
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/contacto.css">
 
     <link rel="icon" type="image/x-icon" href="img/Logo2.png">
 </head>
@@ -41,71 +41,62 @@
                 </li>
             </ul>
         </nav>
-    </header>
 
-    <main>
+        <!-- Titulo superior al estilo index -->
         <section>
-            <h1 class="mangas-nuevos">
+            <h1 class="titulo-seccion">
                 <span>Contáctanos</span>
             </h1>
-            <p style="text-align: center; color: white; margin-bottom: 20px;">
-                ¿Tienes dudas o sugerencias? Envíanos un mensaje y te responderemos a la brevedad.
-            </p>
         </section>
+    </header>
 
-        <!-- Formulario de contacto -->
-        <section class="contenedor-quienes-somos">
-            <form action="" method="post" onsubmit="return validacionFormulario()">
-                <table border="1"
-                    style="margin: 0 auto; color: white; background-color: rgb(0, 0, 0); padding: 20px; border-radius: 10px;">
-                    <tr>
-                        <td>Correo:</td>
-                        <td>
-                            <input type="email" id="txtEmail" required placeholder="ingrese email">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Asunto:</td>
-                        <td>
-                            <input type="text" id="txtAsunto" minlength="3" required placeholder="ingrese asunto">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Mensaje:</td>
-                        <td>
-                            <textarea id="txtMensaje" cols="30" rows="5" required minlength="5"
-                                placeholder="Escriba su mensaje..."></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Edad:</td>
-                        <td>
-                            <input type="number" id="txtEdad" min="1" max="120" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Sexo:</td>
-                        <td>
-                            <select id="cboSexo" required>
-                                <option value="" selected>Seleccione...</option>
-                                <option value="M">Masculino</option>
-                                <option value="H">Femenino</option>
-                                <option value="O">Otro</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: center; padding-top: 15px;">
-                            <input type="reset" value="Limpiar">
-                            <input type="submit" value="Enviar">
-                            <input type="button" value="Listar" onclick="listar()">
-                        </td>
-                    </tr>
-                </table>
+    <main class="seccion-contacto">
+        <p class="subtitulo-contacto">
+            ¿Tienes dudas o sugerencias? Envíanos un mensaje y te responderemos a la brevedad.
+        </p>
+
+        <!-- Formulario de contacto maquetado con tarjeta blanca -->
+        <div class="contacto-box">
+            <form action="" method="post" onsubmit="return validacionFormulario()" class="form-contacto">
+                
+                <div class="campo-grupo">
+                    <label for="txtEmail">Correo electrónico:</label>
+                    <input type="email" id="txtEmail" required placeholder="ejemplo@duocuc.cl">
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="txtAsunto">Asunto:</label>
+                    <input type="text" id="txtAsunto" minlength="3" required placeholder="Ingrese el asunto">
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="txtMensaje">Mensaje:</label>
+                    <textarea id="txtMensaje" cols="30" rows="4" required minlength="5" placeholder="Escriba su mensaje aquí..."></textarea>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="txtEdad">Edad:</label>
+                    <input type="number" id="txtEdad" min="1" max="120" required placeholder="Ej: 20">
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="cboSexo">Sexo:</label>
+                    <select id="cboSexo" required>
+                        <option value="" selected disabled>Seleccione...</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                        <option value="O">Otro</option>
+                    </select>
+                </div>
+
+                <div class="grupo-botones">
+                    <input type="submit" value="Enviar" class="btn-form btn-enviar">
+                    <input type="reset" value="Limpiar" class="btn-form btn-limpiar">
+                    <input type="button" value="Listar" onclick="listar()" class="btn-form btn-listar">
+                </div>
+
             </form>
-        </section>
-
-
+        </div>
     </main>
 
     <footer>
@@ -129,6 +120,8 @@
         </div>
     </footer>
 
+    <!-- Scripts de la página -->
+    <script src="js/main.js"></script>
     <script src="js/contacto.js"></script>
 </body>
 

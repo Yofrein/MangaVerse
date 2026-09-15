@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MangaVerse - Iniciar Sesión</title>
+    <meta name="viewport" content="width=device, initial-scale=1.0" />
+    <title>MangaVerse - Crear Cuenta</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/registro.css">
 
     <!-- Icono de página -->
     <link rel="icon" type="image/x-icon" href="img/Logo2.png">
@@ -15,7 +15,7 @@
 
 <body>
     <header>
-        <!-- Barra de navegación idéntica a las demás páginas -->
+        <!-- Barra de navegación idéntica -->
         <nav class="navbar">
             <ul class="nav-links">
                 <img src="img/Logo.png" alt="MangaVerse" class="logo" />
@@ -46,41 +46,38 @@
         </nav>
     </header>
 
-    <main class="login-contenedor">
-        <div class="login-box">
-            <!-- Columna Izquierda: Imagen del Logo/Manga -->
-            <div class="login-imagen">
+    <main class="registro-contenedor">
+        <div class="registro-box">
+            <!-- Columna Izquierda: Imagen del Logo -->
+            <div class="registro-imagen">
                 <img src="img/Logo.png" alt="MangaVerse Logo">
             </div>
 
-            <!-- Columna Derecha: Formulario de Login -->
-            <div class="login-formulario">
-                <h2>Iniciar Sesión</h2>
-                <p>Ingresa tus datos para acceder a tu cuenta de MangaVerse</p>
+            <!-- Columna Derecha: Formulario de Registro -->
+            <div class="registro-formulario">
+                <h2>Crear Cuenta</h2>
+                <p>Únete a MangaVerse para gestionar tu catálogo y compras</p>
 
-                <form id="form-login">
+                <form id="form-registro">
                     <div class="campo-grupo">
-                        <label for="usuario">Nombre de usuario</label>
-                        <input type="text" id="usuario" placeholder="Ej: JeanToFranku" required>
+                        <label for="reg-usuario">Nombre de usuario</label>
+                        <input type="text" id="reg-usuario" placeholder="Ej: JeanToFranku" required>
                     </div>
 
                     <div class="campo-grupo">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" placeholder="••••••••" required>
+                        <label for="reg-correo">Correo electrónico</label>
+                        <input type="email" id="reg-correo" placeholder="ejemplo@duocuc.cl" required>
                     </div>
 
-                    <!-- Opciones extras para darle realismo -->
-                    <div class="login-opciones">
-                        <label class="recordar-label">
-                            <input type="checkbox" id="recordar"> Recordarme
-                        </label>
-                        <a href="#" class="link-olvido">¿Olvidaste tu contraseña?</a>
+                    <div class="campo-grupo">
+                        <label for="reg-password">Contraseña</label>
+                        <input type="password" id="reg-password" placeholder="••••••••" required>
                     </div>
 
-                    <button type="submit" class="btn-login">Ingresar</button>
+                    <button type="submit" class="btn-registro">Registrarse</button>
 
-                    <p class="texto-registro">
-                        ¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a>
+                    <p class="texto-login">
+                        ¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a>
                     </p>
                 </form>
             </div>
@@ -95,7 +92,7 @@
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="catalogo.html">Catalogo</a></li>
                     <li><a href="quienes-somos.html">Quienes somos</a></li>
-                    <li><a href="mi-cuenta.html">Mi cuenta</a></li>
+                    <li><a href="login.html">Mi cuenta</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </div>
@@ -108,7 +105,7 @@
         </div>
     </footer>
 
-    <!-- Carga del script global unificado -->
+    <!-- Script de la lógica global -->
     <script src="js/main.js"></script>
 </body>
 
