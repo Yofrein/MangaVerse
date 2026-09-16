@@ -81,3 +81,10 @@
     font-size: 100%;
     color: rgb(60, 60, 60);
 }
+
+.titulo-seccion-creadores {
+    font-family: 'Font1', consolas;
+    color: rgb(255, 255, 255);
+    font-size: 600%;
+    font-weight: bold;
+}
