@@ -56,12 +56,22 @@
             <!-- Columna Derecha: Formulario de Registro -->
             <div class="registro-formulario">
                 <h2>Crear Cuenta</h2>
-                <p>Únete a MangaVerse para gestionar tu catálogo y compras</p>
+                <p>Únete a MangaVerse para gestionar tu catálogo, compras y recibir descuentos. </p>
 
                 <form id="form-registro">
                     <div class="campo-grupo">
+                        <label for="reg-nombre">Nombre</label>
+                        <input type="text" id="reg-nombre" placeholder="Ej: JeanToFranku" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="reg-apellido">Apellido</label>
+                        <input type="text" id="reg-apellido" placeholder="Ej: Warrior" required>
+                    </div>
+
+                    <div class="campo-grupo">
                         <label for="reg-usuario">Nombre de usuario</label>
-                        <input type="text" id="reg-usuario" placeholder="Ej: JeanToFranku" required>
+                        <input type="text" id="reg-usuario" placeholder="Ej: Yofrein" required>
                     </div>
 
                     <div class="campo-grupo">
@@ -70,8 +80,18 @@
                     </div>
 
                     <div class="campo-grupo">
+                        <label for="reg-fecha">Fecha de nacimiento</label>
+                        <input type="date" id="reg-fecha" required>
+                    </div>
+
+                    <div class="campo-grupo">
                         <label for="reg-password">Contraseña</label>
-                        <input type="password" id="reg-password" placeholder="••••••••" required>
+                        <input type="password" id="reg-contrasena" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="reg-confirm-password">Confirmar contraseña</label>
+                        <input type="password" id="reg-confirmar-contrasena" placeholder="••••••••" required>
                     </div>
 
                     <button type="submit" class="btn-registro">Registrarse</button>
@@ -83,6 +103,7 @@
             </div>
         </div>
     </main>
+
 
     <footer>
         <div class="contenedor-footer">
@@ -106,7 +127,7 @@
     </footer>
 
     <!-- Script de la lógica global -->
-    <script src="js/main.js"></script>
+    <script src="js/formulario-registro.js"></script>
 </body>
 
 </html>
