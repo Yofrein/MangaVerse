@@ -1,3 +1,13 @@
+// Función global para mostrar alertas elegantes en los formularios
+function mostrarAlertaFormulario(mensaje, esExito = false) {
+    const alertaBox = document.getElementById('alerta-box');
+    if (alertaBox) {
+        alertaBox.textContent = mensaje;
+        alertaBox.className = 'mensaje-alerta ' + (esExito ? 'alerta-exito' : 'alerta-error');
+        alertaBox.style.display = 'block';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Ver si hay una sesión activa con la clave exacta
     const usuarioActivo = localStorage.getItem('usuarioMangaVerse');
@@ -23,23 +33,67 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 2. REGISTRO: Guarda la cuenta y manda a login.html sin activar sesión
+    // 2. REGISTRO: Captura completa de campos, validación de contraseñas y alertas bonitas
     const formRegistro = document.getElementById('form-registro');
     if (formRegistro) {
         formRegistro.addEventListener('submit', function(e) {
             e.preventDefault();
-            const nombre = document.getElementById('reg-usuario').value.trim();
-            const password = document.getElementById('reg-password').value;
 
-            if (nombre !== "" && password !== "") {
-                const cuenta = { usuario: nombre, pass: password };
-                localStorage.setItem('cuentaRegistrada', JSON.stringify(cuenta));
-                window.location.href = 'login.html';
+            const nombre = document.getElementById('reg-nombre') ? document.getElementById('reg-nombre').value.trim() : "";
+            const apellido = document.getElementById('reg-apellido') ? document.getElementById('reg-apellido').value.trim() : "";
+            const usuario = document.getElementById('reg-usuario').value.trim();
+            const correo = document.getElementById('reg-correo').value.trim();
+            const fecha = document.getElementById('reg-fecha') ? document.getElementById('reg-fecha').value : "";
+            
+            // Detecta ambos nombres de ID por si acaso
+            const elPass = document.getElementById('reg-contrasena') || document.getElementById('reg-password');
+            const elConfirmPass = document.getElementById('reg-confirmar-contrasena') || document.getElementById('reg-confirm-password');
+
+            const pass = elPass ? elPass.value : "";
+            const confirmPass = elConfirmPass ? elConfirmPass.value : pass;
+
+            // Validación: Las contraseñas deben coincidir
+            if (pass !== confirmPass) {
+                mostrarAlertaFormulario("Las contraseñas no coinciden. Por favor inténtalo de nuevo.");
+                return;
             }
+
+            // Obtener cuentas previas para comprobar si el usuario ya existe
+            const cuentasGuardadas = JSON.parse(localStorage.getItem('cuentasMangaVerse')) || [];
+            const cuentaUnica = JSON.parse(localStorage.getItem('cuentaRegistrada'));
+
+            const usuarioExiste = cuentasGuardadas.some(c => c.usuario.toLowerCase() === usuario.toLowerCase()) ||
+                                  (cuentaUnica && cuentaUnica.usuario.toLowerCase() === usuario.toLowerCase());
+
+            if (usuarioExiste) {
+                mostrarAlertaFormulario("El nombre de usuario ya está registrado. Por favor elige otro.");
+                return;
+            }
+
+            // Crear objeto de la nueva cuenta
+            const nuevaCuenta = {
+                nombre: nombre,
+                apellido: apellido,
+                usuario: usuario,
+                pass: pass,
+                correo: correo,
+                fecha: fecha
+            };
+
+            // Guardar datos en localStorage
+            localStorage.setItem('cuentaRegistrada', JSON.stringify(nuevaCuenta));
+            cuentasGuardadas.push(nuevaCuenta);
+            localStorage.setItem('cuentasMangaVerse', JSON.stringify(cuentasGuardadas));
+
+            // Feedback visual exitoso y redirección suave
+            mostrarAlertaFormulario("¡Cuenta creada con éxito! Redirigiendo al inicio de sesión...", true);
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1500);
         });
     }
 
-    // 3. LOGIN: Valida e inicia la sesión usando la clave 'usuarioMangaVerse'
+    // 3. LOGIN: Valida e inicia sesión usando alertas bonitas
     const formLogin = document.getElementById('form-login');
     if (formLogin) {
         formLogin.addEventListener('submit', function(e) {
@@ -50,16 +104,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const cuentaGuardada = JSON.parse(localStorage.getItem('cuentaRegistrada'));
 
             if (!cuentaGuardada) {
-                alert("No existe ninguna cuenta registrada. Por favor regístrate primero.");
+                mostrarAlertaFormulario("No existe ninguna cuenta registrada. Por favor regístrate primero.");
                 return;
             }
 
             if (nombreIngresado === cuentaGuardada.usuario && passwordIngresada === cuentaGuardada.pass) {
-                // Guarda con la clave que reconoce mi-cuenta.html
                 localStorage.setItem('usuarioMangaVerse', nombreIngresado);
                 window.location.href = 'mi-cuenta.html';
             } else {
-                alert("Usuario o contraseña incorrectos. Intenta nuevamente.");
+                mostrarAlertaFormulario("Usuario o contraseña incorrectos. Intenta nuevamente.");
             }
         });
     }
@@ -73,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-// 5. NOTIFICACIÓN FLOTANTE (Toast) AL AÑADIR AL CARRITO
+    // 5. NOTIFICACIÓN FLOTANTE (Toast) AL AÑADIR AL CARRITO
     const botonesCarrito = document.querySelectorAll('.anadir-carrito, .anadir-carrito-chico');
     const toast = document.getElementById('toast-notificacion');
     const toastNombre = document.getElementById('toast-producto-nombre');
@@ -92,13 +145,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
 
-                // Mostrar la notificación
                 toast.classList.add('mostrar');
-
-                // Reiniciar el temporizador si se vuelve a presionar rápido
                 clearTimeout(toastTimeout);
 
-                // Ocultar la notificación después de 3 segundos
                 toastTimeout = setTimeout(() => {
                     toast.classList.remove('mostrar');
                 }, 3000);
@@ -106,11 +155,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 6. BUSCADOR FUNCIONAL (En tiempo real y con redirección al catálogo)
+    // 6. BUSCADOR FUNCIONAL
     const inputsBusqueda = document.querySelectorAll('.search-input');
     const botonesBusqueda = document.querySelectorAll('.search-btn');
 
-    // Función para filtrar las tarjetas dentro del catálogo
     function filtrarCatalogo(termino) {
         const tarjetas = document.querySelectorAll('.card-manga, .recuadro-mangas, .recuadro-mangas-masvendidos');
         const terminoLimpio = termino.toLowerCase().trim();
@@ -120,27 +168,24 @@ document.addEventListener('DOMContentLoaded', function() {
             if (titulo) {
                 const textoTitulo = titulo.textContent.toLowerCase();
                 if (textoTitulo.includes(terminoLimpio)) {
-                    tarjeta.style.display = ""; // Muestra la tarjeta
+                    tarjeta.style.display = "";
                 } else {
-                    tarjeta.style.display = "none"; // Oculta la tarjeta
+                    tarjeta.style.display = "none";
                 }
             }
         });
     }
 
-    // Ejecutar búsqueda o redirección según corresponda
     function ejecutarBusqueda(valor) {
         const esPaginaCatalogo = window.location.pathname.includes('catalogo.html');
 
         if (esPaginaCatalogo) {
             filtrarCatalogo(valor);
         } else if (valor.trim() !== "") {
-            // Si estamos en Inicio/Contacto, redirige al catálogo con el parámetro de búsqueda
             window.location.href = `catalogo.html?buscar=${encodeURIComponent(valor.trim())}`;
         }
     }
 
-    // Eventos para escribir en vivo y presionar Enter
     inputsBusqueda.forEach(input => {
         input.addEventListener('input', function() {
             if (window.location.pathname.includes('catalogo.html')) {
@@ -156,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Evento para el botón de la lupa
     botonesBusqueda.forEach(boton => {
         boton.addEventListener('click', function(e) {
             e.preventDefault();
@@ -170,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Leer parámetro URL al cargar la página si venimos desde Inicio
     const urlParams = new URLSearchParams(window.location.search);
     const busquedaURL = urlParams.get('buscar');
     if (busquedaURL && window.location.pathname.includes('catalogo.html')) {

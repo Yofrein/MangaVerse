@@ -42,7 +42,6 @@
             </ul>
         </nav>
 
-        <!-- Titulo superior al estilo index -->
         <section>
             <h1 class="titulo-seccion">
                 <span>Contáctanos</span>
@@ -55,9 +54,11 @@
             ¿Tienes dudas o sugerencias? Envíanos un mensaje y te responderemos a la brevedad.
         </p>
 
-        <!-- Formulario de contacto maquetado con tarjeta blanca -->
         <div class="contacto-box">
-            <form action="" method="post" onsubmit="return validacionFormulario()" class="form-contacto">
+            <!-- Caja dinámica para alertas de validación -->
+            <div id="alerta-box" class="mensaje-alerta"></div>
+
+            <form action="" method="post" onsubmit="return validacionFormulario(event)" class="form-contacto">
                 
                 <div class="campo-grupo">
                     <label for="txtEmail">Correo electrónico:</label>
@@ -96,6 +97,9 @@
                 </div>
 
             </form>
+
+            <!-- Contenedor para renderizar la tabla al presionar Listar -->
+            <div id="salida" style="margin-top: 20px; display: flex; justify-content: center;"></div>
         </div>
     </main>
 
@@ -120,7 +124,6 @@
         </div>
     </footer>
 
-    <!-- Scripts de la página -->
     <script src="js/main.js"></script>
     <script src="js/formulario-contacto.js"></script>
 </body>
