@@ -99,34 +99,50 @@
                         <h3>Resumen del Pedido</h3>
                         <div class="resumen-linea">
                             <span>Subtotal:</span>
-                            <span>$20.000</span>
+                            <span id="resumen-subtotal">$20.000</span>
                         </div>
                         <div class="resumen-linea">
                             <span>Envío:</span>
-                            <span>$3.000</span>
+                            <span id="resumen-envio">$3.000</span>
                         </div>
                         <div class="resumen-linea resumen-total">
                             <span>Total:</span>
-                            <span>$23.000</span>
+                            <span id="resumen-total">$23.000</span>
                         </div>
                     </div>
-                    <button class="btn-pagar">Proceder al Pago</button>
+                    <button id="btn-pagar" class="btn-pagar">Proceder al Pago</button>
                 </div>
 
             </div>
         </section>
     </header>
 
+    <div id="mensaje-pago" class="modal-pago oculto">
+        <div class="modal-contenido">
+            <h3>Procesando...</h3>
+            <p>Redirigiendo a la plataforma segura de Webpay...</p>
+        </div>
+    </div>
+
+    <div id="modal-carrito-vacio" class="modal-pago oculto">
+        <div class="modal-contenido">
+            <h3>¡Tu carrito está vacío!</h3>
+            <p>No tienes productos seleccionados para procesar el pago.</p>
+            <p>Si quieres, puedes agregar mangas desde nuestro catálogo <a href="catalogo.html" class="enlace-catalogo">Catálogo aquí</a>.</p>
+            <button id="btn-cerrar-vacio" class="btn-cerrar-modal">Cerrar</button>
+        </div>
+    </div>
+
     <!-- Script global para la persistencia del usuario y la interfaz -->
     <script src="js/main.js"></script>
+    <!-- Script específico para el carrito -->
+    <script src="js/carrito.js"></script>
 </body>
+
 <footer>
     <div class="contenedor-footer">
-
         <div class="footer-superior">
-
             <img src="img/logo.png" alt="" class="logo-footer">
-
             <ul class="footer-nav">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="catalogo.html">Catalogo</a></li>
@@ -134,9 +150,7 @@
                 <li><a href="mi-cuenta.html">Mi cuenta</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
-
         </div>
-
     </div>
 
     <!-- Las cosas de abajo del slogan y copiright y ñes -->

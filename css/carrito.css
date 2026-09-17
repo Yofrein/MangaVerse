@@ -149,3 +149,54 @@
 .btn-pagar:hover {
     background-color: rgb(128, 44, 206);
 }
+
+.modal-pago {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999; 
+}
+
+/* Regla para ocultar/mostrar */
+.modal-pago.oculto {
+    display: none !important;
+}
+
+.modal-contenido {
+    background-color: #222;
+    color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #ff4757;
+}
+/* Estilo para mensaje de no contenido en el carro*/
+.enlace-catalogo {
+    color: #ff4757;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.enlace-catalogo:hover {
+    color: #ff6b81;
+}
+
+.btn-cerrar-modal {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #ff4757;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-cerrar-modal:hover {
+    background-color: #e04040;
+}
