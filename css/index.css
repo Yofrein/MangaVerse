@@ -1,4 +1,4 @@
-/*Títulos oscuros con letras grandes*/
+/* ===== Títulos oscuros con letras grandes ===== */
 .titulo-seccion {
     display: flex;
     justify-content: center;
@@ -16,24 +16,63 @@
 }
 
 
-/*Mangas nuevos Tarjetas Blancas*/
-.seccion-mangas-nuevos {
+/* ===== Secciones con fondo gris (mismo estilo base) ===== */
+.seccion-mangas-nuevos,
+.seccion-mangas-masvendidos,
+.seccion-testimonios,
+.seccion-presentacion {
     background-color: #646464;
     padding: 40px 20px;
 }
 
-.contenedor-tarjetas {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+/* Esta sección es la única con más espacio arriba y abajo */
+.seccion-presentacion {
+    padding: 50px 20px;
 }
 
-.recuadro-mangas {
+
+/* ===== Contenedores (todos usan flex centrado) ===== */
+.contenedor-tarjetas,
+.contenedor-testimonios,
+.contenedor-presentacion {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Contenedores que no pasan de 1200px y quedan centrados */
+.contenedor-testimonios,
+.contenedor-presentacion,
+.recuadro-masvendidos {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contenedor-presentacion {
+    align-items: center;
+    gap: 40px;
+}
+
+.recuadro-masvendidos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+
+/* ===== Tarjetas blancas (base compartida) ===== */
+.recuadro-mangas,
+.recuadro-mangas-masvendidos,
+.recuadro-testimonio {
     background-color: white;
-    padding: 15px;
     border-radius: 10px;
     text-align: center;
+}
+
+/* Mangas nuevos */
+.recuadro-mangas {
+    padding: 15px;
     width: 220px;
 }
 
@@ -55,24 +94,80 @@
     margin: 0 0 10px;
 }
 
-.anadir-carrito {
+/* Más vendidos */
+.recuadro-mangas-masvendidos {
+    padding: 12px 8px;
+}
+
+.imagen-masvendido {
+    width: 120px;
+    height: 170px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.recuadro-mangas-masvendidos h1 {
+    font-size: 15px;
+    color: black;
+    margin: 5px 0;
+}
+
+.recuadro-mangas-masvendidos h2 {
+    font-size: 14px;
+    color: #444;
+    margin: 0 0 8px;
+}
+
+/* Testimonios */
+.recuadro-testimonio {
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.texto-testimonio {
+    font-size: 14px;
+    color: #313131;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.recuadro-testimonio strong {
+    color: rgb(128, 44, 206);
+    font-size: 14px;
+}
+
+
+/* ===== Botones "Añadir al carrito" (base compartida) ===== */
+.anadir-carrito,
+.anadir-carrito-chico {
     background-color: #313131;
     color: white;
     border: none;
-    font-size: 17px;
-    padding: 8px;
     border-radius: 8px;
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.anadir-carrito:hover {
+.anadir-carrito:hover,
+.anadir-carrito-chico:hover {
     background-color: rgb(128, 44, 206);
 }
 
+.anadir-carrito {
+    font-size: 17px;
+    padding: 8px;
+}
 
-/*Beneficios*/
+.anadir-carrito-chico {
+    font-size: 15px;
+    padding: 8px 0;
+    white-space: nowrap;
+}
+
+
+/* ===== Beneficios ===== */
 .metricas {
     display: flex;
     justify-content: space-around;
@@ -106,60 +201,56 @@
 }
 
 
-/*Más vendido tarjetas*/
-.seccion-mangas-masvendidos {
-    background-color: #646464;
-    padding: 40px 20px;
-}
-
-.recuadro-masvendidos {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.recuadro-mangas-masvendidos {
-    background-color: #ffffff;
-    padding: 12px 8px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.imagen-masvendido {
-    width: 120px;
-    height: 170px;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    display: center;
-}
-.recuadro-mangas-masvendidos h1 {
-    font-size: 15px;
-    color: rgb(0, 0, 0);
-    margin: 5px 0;
-}
-
-.recuadro-mangas-masvendidos h2 {
-    font-size: 14px;
-    color: #444444;
-    margin: 0 0 8px;
-}
-
-.anadir-carrito-chico {
-    background-color: #313131;
-    color: white;
-    font-size: 15px;
-    padding: 8px 0;
-    border-radius: 8px;
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.anadir-carrito-chico:hover {
+/* ===== Banner y descripción ===== */
+.banner-promocion {
     background-color: rgb(128, 44, 206);
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.descripcion-manga {
+    font-size: 13px;
+    color: #666;
+    margin: 0 0 8px 0;
+}
+
+
+/* ===== Sección de presentación (imagen + texto) ===== */
+.presentacion-imagen,
+.presentacion-texto {
+    flex: 1;
+    min-width: 300px;
+}
+
+.presentacion-imagen {
+    max-width: 500px;
+}
+
+.presentacion-imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+.presentacion-texto {
+    color: white;
+}
+
+.presentacion-texto h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.presentacion-texto p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #f1f1f1;
 }
