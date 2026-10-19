@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MangaVerse - Carrito de Compras</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/menu.css">
@@ -14,6 +14,11 @@
 </head>
 
 <body>
+
+    <div class="banner-promocion">
+        <p>🔥 Bienvenido a la mejor tienda de mangas de Chile 🔥</p>
+    </div>
+
     <header>
         <!-- Barra de navegación idéntica a las demás secciones -->
         <nav class="navbar">
@@ -44,7 +49,9 @@
                 </li>
             </ul>
         </nav>
+    </header>
 
+    <main>
         <!-- Titulo superior -->
         <section>
             <h1 class="titulo-seccion">
@@ -64,6 +71,7 @@
                                 <th>Manga</th>
                                 <th>Cantidad</th>
                                 <th>Precio</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -109,13 +117,52 @@
                             <span>Total:</span>
                             <span id="resumen-total">$23.000</span>
                         </div>
+
+                        <!-- Sección de Código de Descuento -->
+                        <div class="cupon-container">
+                            <label for="codigo-descuento">Introducir código de descuento</label>
+                            <div class="cupon-input-grupo">
+                                <input type="text" id="codigo-descuento" placeholder="Introducir código de descuento">
+                                <button type="button" class="btn-aplicar-cupon">Aplicar descuento</button>
+                            </div>
+                        </div>
+
+                        <!-- Sección de Región -->
+                        <div class="region-container">
+                            <label for="select-region">Región</label>
+                            <div class="region-select-grupo">
+                                <select id="select-region">
+                                    <option value="" disabled selected>Seleccione una región</option>
+                                    <option value="arica">Región de Arica y Parinacota</option>
+                                    <option value="tarapaca">Región de Tarapacá</option>
+                                    <option value="antofagasta">Región de Antofagasta</option>
+                                    <option value="atacama">Región de Atacama</option>
+                                    <option value="coquimbo">Región de Coquimbo</option>
+                                    <option value="valparaiso">Región de Valparaíso</option>
+                                    <option value="metropolitana">Región Metropolitana de Santiago</option>
+                                    <option value="ohiggins">Región del Libertador Gral. Bernardo O'Higgins</option>
+                                    <option value="maule">Región del Maule</option>
+                                    <option value="nuble">Región de Ñuble</option>
+                                    <option value="biobio">Región del Biobío</option>
+                                    <option value="araucania">Región de La Araucanía</option>
+                                    <option value="rios">Región de Los Ríos</option>
+                                    <option value="lagos">Región de Los Lagos</option>
+                                    <option value="aysen">Región de Aysén del Gral. Carlos Ibáñez del Campo</option>
+                                    <option value="magallanes">Región de Magallanes y de la Antártica Chilena</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <button id="btn-pagar" class="btn-pagar">Proceder al Pago</button>
+                    
+                    <div class="carrito-botones-accion">
+                        <button id="btn-pagar" class="btn-pagar">Proceder al Pago</button>
+                        <a href="index.html" class="btn-seguir-comprando">Seguir comprando</a>
+                    </div>
                 </div>
 
             </div>
         </section>
-    </header>
+    </main>
 
     <div id="mensaje-pago" class="modal-pago oculto">
         <div class="modal-contenido">
@@ -128,7 +175,8 @@
         <div class="modal-contenido">
             <h3>¡Tu carrito está vacío!</h3>
             <p>No tienes productos seleccionados para procesar el pago.</p>
-            <p>Si quieres, puedes agregar mangas desde nuestro catálogo <a href="catalogo.html" class="enlace-catalogo">Catálogo aquí</a>.</p>
+            <p>Si quieres, puedes agregar mangas desde nuestro catálogo <a href="catalogo.html"
+                    class="enlace-catalogo">Catálogo aquí</a>.</p>
             <button id="btn-cerrar-vacio" class="btn-cerrar-modal">Cerrar</button>
         </div>
     </div>
