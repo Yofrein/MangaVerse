@@ -55,51 +55,13 @@
     color: #fdfdfd;
 }
 
-/*Mangas a la derecha*/
-.catalogo-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    width: 100%;
-}
-
-/*Tarjeta de Manga*/
-.card-manga {
-    background-color: white;
-    color: black;
-    padding: 12px;
-    border-radius: 10px;
-    text-align: center;
-    height: fit-content;
-}
-
-.card-manga img {
-    width: 120px;
-    height: 170px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-}
-
-.card-manga h3 {
-    font-size: 14px;
-    margin: 5px 0;
-    color: black;
-}
-
-.card-manga .precio {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    margin: 0 0 8px;
-}
-
-/* Espaciado del grupo dentro del panel */
+/*Espaciado del grupo dentro del panel*/
 .grupo-filtro {
     padding: 20px;
     color: white;
 }
 
-/* Estilo para la barra desplegable */
+/*Estilo para la barra desplegable*/
 .desplegable-filtro {
     width: 100%;
     padding: 8px;
@@ -109,4 +71,60 @@
     color: white;
     font-size: 14px;
     cursor: pointer;
+}
+
+/*Mangas a la derecha*/
+.catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+}
+
+/*Tarjeta de Manga (Catálogo)*/
+.card-manga {
+    background-color: white;
+    color: black;
+    padding: 12px 8px;
+    border-radius: 10px;
+    text-align: center;
+    height: fit-content;
+}
+
+.card-manga img {
+    width: 120px;
+    height: 170px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.card-manga h3 {
+    font-size: 15px;
+    color: black;
+    margin: 5px 0;
+}
+
+.card-manga .precio {
+    font-size: 14px;
+    color: #444;
+    margin: 0 0 8px;
+    font-weight: bold;
+}
+
+/* Botón "Añadir al carrito" idéntico al de más vendidos del index */
+.card-manga .anadir-carrito {
+    background-color: #313131;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
+    padding: 8px 0;
+    white-space: nowrap;
+}
+
+.card-manga .anadir-carrito:hover {
+    background-color: rgb(128, 44, 206);
 }

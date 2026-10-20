@@ -74,29 +74,8 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="producto-info">
-                                        <img src="img/Mangas/Golden kamuy 01.png" alt="Manga">
-                                        <span>Golden Kamuy 01</span>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>$10.000</td>
-                                <td><button class="btn-eliminar">Eliminar</button></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="producto-info">
-                                        <img src="img/Mangas/Chainsaw man 24.png" alt="Manga">
-                                        <span>Chainsaw man 24</span>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>$10.000</td>
-                                <td><button class="btn-eliminar">Eliminar</button></td>
-                            </tr>
+                        <tbody id="tabla-carrito-cuerpo">
+                            <!-- Los productos añadidos se cargarán dinámicamente aquí -->
                         </tbody>
                     </table>
                 </div>
@@ -107,7 +86,7 @@
                         <h3>Resumen del Pedido</h3>
                         <div class="resumen-linea">
                             <span>Subtotal:</span>
-                            <span id="resumen-subtotal">$20.000</span>
+                            <span id="resumen-subtotal">$0</span>
                         </div>
                         <div class="resumen-linea">
                             <span>Envío:</span>
@@ -115,7 +94,7 @@
                         </div>
                         <div class="resumen-linea resumen-total">
                             <span>Total:</span>
-                            <span id="resumen-total">$23.000</span>
+                            <span id="resumen-total">$3.000</span>
                         </div>
 
                         <!-- Sección de Código de Descuento -->
@@ -153,7 +132,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="carrito-botones-accion">
                         <button id="btn-pagar" class="btn-pagar">Proceder al Pago</button>
                         <a href="index.html" class="btn-seguir-comprando">Seguir comprando</a>
@@ -181,9 +160,9 @@
         </div>
     </div>
 
-    <!-- Script global para la persistencia del usuario y la interfaz -->
+    <!-- Script global -->
     <script src="js/main.js"></script>
-    <!-- Script específico para el carrito -->
+    <!-- Script específico para la gestión del carrito -->
     <script src="js/carrito.js"></script>
 </body>
 
@@ -201,7 +180,6 @@
         </div>
     </div>
 
-    <!-- Las cosas de abajo del slogan y copiright y ñes -->
     <hr class="linea-div-footer">
     <div class="footer-inferior">
         <p>© 2026 MangaVerse. Todos los derechos reservados.</p>

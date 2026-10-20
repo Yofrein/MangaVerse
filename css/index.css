@@ -61,41 +61,158 @@
 }
 
 
-/* ===== Tarjetas blancas (base compartida) ===== */
-.recuadro-mangas,
-.recuadro-mangas-masvendidos,
-.recuadro-testimonio {
+/* ===== Estilos del Carrusel de Mangas Nuevos (Dos columnas: Texto izq / Imagen der) ===== */
+.seccion-mangas-nuevos {
+    position: relative;
+    padding: 50px 20px;
+    background-color: #646464;
+}
+
+.carrusel-contenedor-general {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.carrusel-pista {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.carrusel-pista::-webkit-scrollbar {
+    display: none;
+}
+
+/* Botones de navegación laterales del carrusel */
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #313131;
+    color: white;
+    border: none;
+    font-size: 26px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.carrusel-btn:hover {
+    background-color: rgb(128, 44, 206);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.btn-prev {
+    left: -25px;
+}
+
+.btn-next {
+    right: -25px;
+}
+
+/* Tarjeta principal que actúa como contenedor horizontal de dos lados */
+.recuadro-mangas {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    background-color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    gap: 30px;
+}
+
+/* Lado izquierdo (Cuadro blanco con textos y botón) */
+.manga-info-izquierda {
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.manga-info-izquierda h1 {
+    font-size: 28px;
+    margin: 0 0 10px;
+    color: #111;
+    font-weight: bold;
+}
+
+.manga-info-izquierda .descripcion-manga {
+    font-size: 15px;
+    color: #666;
+    margin: 0 0 15px;
+}
+
+.manga-info-izquierda h2 {
+    font-size: 24px;
+    color: rgb(128, 44, 206);
+    margin: 0 0 20px;
+    font-weight: bold;
+}
+
+/* Lado derecho (Imagen grande del manga) */
+.manga-imagen-derecha {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manga-imagen-derecha img {
+    max-width: 100%;
+    width: 260px;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: block;
+}
+
+/* Botón de añadir al carrito adaptado al nuevo bloque */
+.manga-info-izquierda .anadir-carrito {
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #313131;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 220px;
+}
+
+.manga-info-izquierda .anadir-carrito:hover {
+    background-color: rgb(128, 44, 206);
+}
+
+
+/* ===== Más vendidos ===== */
+.recuadro-mangas-masvendidos {
     background-color: white;
     border-radius: 10px;
     text-align: center;
-}
-
-/* Mangas nuevos */
-.recuadro-mangas {
-    padding: 15px;
-    width: 220px;
-}
-
-.recuadro-mangas img {
-    width: 220px;
-    height: 300px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.recuadro-mangas h1 {
-    font-size: 18px;
-    margin: 8px 0 4px;
-}
-
-.recuadro-mangas h2 {
-    font-size: 16px;
-    color: #444;
-    margin: 0 0 10px;
-}
-
-/* Más vendidos */
-.recuadro-mangas-masvendidos {
     padding: 12px 8px;
 }
 
@@ -118,8 +235,12 @@
     margin: 0 0 8px;
 }
 
-/* Testimonios */
+
+/* ===== Testimonios ===== */
 .recuadro-testimonio {
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
     padding: 20px;
     width: 280px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -138,8 +259,7 @@
 }
 
 
-/* ===== Botones "Añadir al carrito" (base compartida) ===== */
-.anadir-carrito,
+/* ===== Botón "Añadir al carrito" chico ===== */
 .anadir-carrito-chico {
     background-color: #313131;
     color: white;
@@ -148,22 +268,13 @@
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.anadir-carrito:hover,
-.anadir-carrito-chico:hover {
-    background-color: rgb(128, 44, 206);
-}
-
-.anadir-carrito {
-    font-size: 17px;
-    padding: 8px;
-}
-
-.anadir-carrito-chico {
     font-size: 15px;
     padding: 8px 0;
     white-space: nowrap;
+}
+
+.anadir-carrito-chico:hover {
+    background-color: rgb(128, 44, 206);
 }
 
 
@@ -212,9 +323,9 @@
 }
 
 .descripcion-manga {
-    font-size: 13px;
+    font-size: 14px;
     color: #666;
-    margin: 0 0 8px 0;
+    margin: 0 0 10px 0;
 }
 
 

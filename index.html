@@ -71,46 +71,71 @@
             </div>
         </section>
 
-        <!--Mangas nuevos-->
+        <!--Mangas nuevos (Carrusel en dos columnas)-->
         <section>
             <h1 class="titulo-seccion"><span>Mangas nuevos</span></h1>
         </section>
 
         <section class="seccion-mangas-nuevos">
-            <div class="contenedor-tarjetas">
+            <div class="carrusel-contenedor-general">
+                <!-- Botón Izquierda -->
+                <button class="carrusel-btn btn-prev" id="carrusel-prev">&#10094;</button>
 
-                <div class="recuadro-mangas">
-                    <img src="img/Mangas/Berserk 01.jpg" alt="Manga">
-                    <h1>Berserk 01</h1>
-                    <p class="descripcion-manga">Edición definitiva de lujo</p>
-                    <h2>$10.000</h2>
-                    <button class="anadir-carrito">Añadir al carrito</button>
+                <!-- Pista deslizante del carrusel -->
+                <div class="carrusel-pista" id="carrusel-pista">
+
+                    <div class="recuadro-mangas">
+                        <div class="manga-info-izquierda">
+                            <h1>Berserk 01</h1>
+                            <p class="descripcion-manga">Edición definitiva de lujo</p>
+                            <h2>$10.000</h2>
+                            <button class="anadir-carrito">Añadir al carrito</button>
+                        </div>
+                        <div class="manga-imagen-derecha">
+                            <img src="img/Mangas/Berserk 01.jpg" alt="Berserk 01">
+                        </div>
+                    </div>
+
+                    <div class="recuadro-mangas">
+                        <div class="manga-info-izquierda">
+                            <h1>Blue lock 11</h1>
+                            <p class="descripcion-manga">Arco de selección secundaria</p>
+                            <h2>$12.000</h2>
+                            <button class="anadir-carrito">Añadir al carrito</button>
+                        </div>
+                        <div class="manga-imagen-derecha">
+                            <img src="img/Mangas/Blue lock 11.jpg" alt="Blue lock 11">
+                        </div>
+                    </div>
+
+                    <div class="recuadro-mangas">
+                        <div class="manga-info-izquierda">
+                            <h1>Blue period 06</h1>
+                            <p class="descripcion-manga">Exámenes de admisión de Tokio</p>
+                            <h2>$11.500</h2>
+                            <button class="anadir-carrito">Añadir al carrito</button>
+                        </div>
+                        <div class="manga-imagen-derecha">
+                            <img src="img/Mangas/Blue period 06.jpg" alt="Blue period 06">
+                        </div>
+                    </div>
+
+                    <div class="recuadro-mangas">
+                        <div class="manga-info-izquierda">
+                            <h1>Chainsaw man 24</h1>
+                            <p class="descripcion-manga">Arco del Demonio de la Guerra</p>
+                            <h2>$12.000</h2>
+                            <button class="anadir-carrito">Añadir al carrito</button>
+                        </div>
+                        <div class="manga-imagen-derecha">
+                            <img src="img/Mangas/Chainsaw man 24.png" alt="Chainsaw man 24">
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="recuadro-mangas">
-                    <img src="img/Mangas/Blue lock 11.jpg" alt="Manga">
-                    <h1>Blue lock 11</h1>
-                    <p class="descripcion-manga">Arco de selección secundaria</p>
-                    <h2>$12.000</h2>
-                    <button class="anadir-carrito">Añadir al carrito</button>
-                </div>
-
-                <div class="recuadro-mangas">
-                    <img src="img/Mangas/Blue period 06.jpg" alt="Manga">
-                    <h1>Blue period 06</h1>
-                    <p class="descripcion-manga">Exámenes de admisión de Tokio</p>
-                    <h2>$11.500</h2>
-                    <button class="anadir-carrito">Añadir al carrito</button>
-                </div>
-
-                <div class="recuadro-mangas">
-                    <img src="img/Mangas/Chainsaw man 24.png" alt="Manga">
-                    <h1>Chainsaw man 24</h1>
-                    <p class="descripcion-manga">Arco del Demonio de la Guerra</p>
-                    <h2>$12.000</h2>
-                    <button class="anadir-carrito">Añadir al carrito</button>
-                </div>
-
+                <!-- Botón Derecha -->
+                <button class="carrusel-btn btn-next" id="carrusel-next">&#10095;</button>
             </div>
         </section>
 
@@ -321,6 +346,8 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/carrusel-index.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 
 </html>
