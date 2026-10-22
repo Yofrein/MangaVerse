@@ -9,6 +9,27 @@ function mostrarAlertaFormulario(mensaje, esExito = false) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // ==========================================
+    // 0. INICIALIZAR USUARIO ADMINISTRADOR POR DEFECTO
+    // ==========================================
+    const cuentasGuardadasAdminCheck = JSON.parse(localStorage.getItem('cuentasMangaVerse')) || [];
+    const existeAdmin = cuentasGuardadasAdminCheck.some(c => c.usuario === "admin");
+    
+    if (!existeAdmin) {
+        const cuentaAdmin = {
+            nombre: "Administrador",
+            apellido: "MangaVerse",
+            usuario: "admin",
+            pass: "admin123",
+            correo: "admin@mangaverse.cl",
+            fecha: "2026-01-01",
+            rol: "admin" // Identificador clave para el panel
+        };
+        cuentasGuardadasAdminCheck.push(cuentaAdmin);
+        localStorage.setItem('cuentasMangaVerse', JSON.stringify(cuentasGuardadasAdminCheck));
+    }
+
     // 1. Ver si hay una sesión activa con la clave exacta
     const usuarioActivo = localStorage.getItem('usuarioMangaVerse');
 
@@ -70,14 +91,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Crear objeto de la nueva cuenta
+            // Crear objeto de la nueva cuenta (por defecto rol cliente)
             const nuevaCuenta = {
                 nombre: nombre,
                 apellido: apellido,
                 usuario: usuario,
                 pass: pass,
                 correo: correo,
-                fecha: fecha
+                fecha: fecha,
+                rol: "cliente"
             };
 
             // Guardar datos en localStorage
@@ -93,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 3. LOGIN: Valida e inicia sesión usando alertas bonitas
+    // 3. LOGIN: Valida e inicia sesión verificando si es cliente o admin
     const formLogin = document.getElementById('form-login');
     if (formLogin) {
         formLogin.addEventListener('submit', function(e) {
@@ -101,18 +123,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const nombreIngresado = document.getElementById('usuario').value.trim();
             const passwordIngresada = document.getElementById('password').value;
 
-            const cuentaGuardada = JSON.parse(localStorage.getItem('cuentaRegistrada'));
+            const cuentasGuardadas = JSON.parse(localStorage.getItem('cuentasMangaVerse')) || [];
+            const cuentaUnica = JSON.parse(localStorage.getItem('cuentaRegistrada'));
 
-            if (!cuentaGuardada) {
-                mostrarAlertaFormulario("No existe ninguna cuenta registrada. Por favor regístrate primero.");
+            // Buscamos coincidencia en la lista general de cuentas
+            let usuarioEncontrado = cuentasGuardadas.find(c => c.usuario === nombreIngresado && c.pass === passwordIngresada);
+
+            // Resguardo por si acaso está en la cuenta única individual
+            if (!usuarioEncontrado && cuentaUnica && cuentaUnica.usuario === nombreIngresado && cuentaUnica.pass === passwordIngresada) {
+                usuarioEncontrado = cuentaUnica;
+            }
+
+            if (!usuarioEncontrado) {
+                mostrarAlertaFormulario("Usuario o contraseña incorrectos. Intenta nuevamente.");
                 return;
             }
 
-            if (nombreIngresado === cuentaGuardada.usuario && passwordIngresada === cuentaGuardada.pass) {
-                localStorage.setItem('usuarioMangaVerse', nombreIngresado);
-                window.location.href = 'mi-cuenta.html';
+            // Guardamos la sesión activa en el navegador
+            localStorage.setItem('usuarioMangaVerse', usuarioEncontrado.usuario);
+
+            // Redirección según el rol del usuario
+            if (usuarioEncontrado.rol === 'admin') {
+                window.location.href = 'admin.html';
             } else {
-                mostrarAlertaFormulario("Usuario o contraseña incorrectos. Intenta nuevamente.");
+                window.location.href = 'mi-cuenta.html';
             }
         });
     }
