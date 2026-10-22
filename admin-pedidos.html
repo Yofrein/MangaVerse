@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MangaVerse - Gestión de Pedidos</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/admin.css">
+
+    <!-- Icono de página -->
+    <link rel="icon" type="image/x-icon" href="img/Logo2.png">
+</head>
+
+<body>
+
+    <div class="banner-promocion">
+        <p>🔥 Panel de Control y Administración - MangaVerse 🔥</p>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <img src="img/Logo.png" alt="MangaVerse" class="logo" />
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="quienes-somos.html">Quienes somos</a></li>
+
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar pedido..." class="search-input">
+                    <button type="submit" class="search-btn">
+                        <img src="img/Buscador.png" alt="#" class="search-btn">
+                    </button>
+                </div>
+
+                <li>
+                    <a href="carrito.html" class="nav-links-right">
+                        <img src="img/Carrito.png" alt="Carrito" class="nav-icon">
+                        <span>Carrito</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="login.html" class="nav-links-right">
+                        <img src="img/User.png" alt="Mi cuenta" class="nav-icon">
+                        <span>Mi cuenta</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <section>
+            <h1 class="titulo-seccion">
+                <span>Pedidos Recientes</span>
+            </h1>
+        </section>
+    </header>
+
+    <main class="seccion-admin">
+        <div class="contenedor-admin">
+
+            <!-- Menú Lateral -->
+            <aside class="panel-menu-admin">
+                <h1>Menú Admin</h1>
+                <ul class="admin-links-menu">
+                    <li><a href="admin.html">Dashboard</a></li>
+                    <li><a href="admin-productos.html">Gestión de Productos</a></li>
+                    <li><a href="admin-pedidos.html" class="activo">Pedidos Recientes</a></li>
+                    <li><a href="admin-dscto.html">Cupones y Descuentos</a></li>
+                    <li><a href="admin-clientes.html">Clientes Registrados</a></li>
+                    <li><a href="index.html" class="cerrar-sesion">Salir al sitio</a></li>
+                </ul>
+            </aside>
+
+            <!-- Contenido Principal -->
+            <section class="admin-contenido-box">
+                <div class="admin-header-seccion">
+                    <h2>Órdenes de Compra</h2>
+                    <p>Revisa el estado de los envíos y despachos hacia las distintas regiones.</p>
+                </div>
+
+                <div class="admin-tabla-container">
+                    <table class="tabla-admin-inventario">
+                        <thead>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>Cliente</th>
+                                <th>Región de Despacho</th>
+                                <th>Total Pagado</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#MV-1048</td>
+                                <td>Ignacio Valenzuela</td>
+                                <td>Región Metropolitana</td>
+                                <td>$23.000</td>
+                                <td><span style="color: #27ae60; font-weight: bold;">En camino</span></td>
+                            </tr>
+                            <tr>
+                                <td>#MV-1049</td>
+                                <td>Fernanda Morales</td>
+                                <td>Región de Valparaíso</td>
+                                <td>$33.000</td>
+                                <td><span style="color: #e67e22; font-weight: bold;">Preparando</span></td>
+                            </tr>
+                            <tr>
+                                <td>#MV-1050</td>
+                                <td>Matías Soto</td>
+                                <td>Región del Biobío</td>
+                                <td>$13.000</td>
+                                <td><span style="color: #c0392b; font-weight: bold;">Pendiente</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="footer-superior">
+                <img src="img/Logo.png" alt="Logo MangaVerse" class="logo-footer">
+                <ul class="footer-nav">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catalogo</a></li>
+                    <li><a href="quienes-somos.html">Quienes somos</a></li>
+                    <li><a href="login.html">Mi cuenta</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="linea-div-footer">
+
+        <div class="footer-inferior">
+            <p>© 2026 MangaVerse. Todos los derechos reservados.</p>
+            <p class="frase-footer">Acercando la pasión del manga a todo Santiago</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

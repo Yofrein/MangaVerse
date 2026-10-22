@@ -44,6 +44,7 @@
     color: rgb(0, 0, 0);
     padding: 25px;
     border-radius: 10px;
+    overflow-x: auto;
 }
 
 .tabla-carrito {
@@ -92,7 +93,7 @@
     background-color: rgb(150, 30, 30);
 }
 
-/*Resumen de Pago (Ancho ampliado para que el texto respire bien) */
+/*Resumen de Pago*/
 
 .carrito-resumen-box {
     flex: 1.2;
@@ -275,7 +276,6 @@
     z-index: 999999; 
 }
 
-/* Regla para ocultar/mostrar */
 .modal-pago.oculto {
     display: none !important;
 }
@@ -287,9 +287,9 @@
     border-radius: 8px;
     text-align: center;
     border: 2px solid #ff4757;
+    max-width: 90%;
 }
 
-/* Estilo para mensaje de no contenido en el carro*/
 .enlace-catalogo {
     color: #ff4757;
     font-weight: bold;
@@ -311,5 +311,23 @@
 }
 
 .btn-cerrar-modal:hover {
-    background-color: #e04040;
+    background-color: e04040;
+}
+
+/* Media Queries Responsivas para Pantallas Pequeñas / Celulares */
+@media (max-width: 768px) {
+    .carrito-contenedor {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .carrito-tabla-box, 
+    .carrito-resumen-box {
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .titulo-seccion span {
+        font-size: 200%;
+    }
 }
