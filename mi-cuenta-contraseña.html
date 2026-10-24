@@ -78,29 +78,31 @@
                 <div class="cuenta-header-seccion">
                     <h2>Seguridad de la cuenta</h2>
                     <p>Actualiza tu contraseña de acceso de forma segura.</p>
+                    <!-- Contenedor para alertas dinámicas -->
+                    <div id="alerta-box" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 6px; font-weight: bold; text-align: center;"></div>
                 </div>
 
                 <!-- Formulario de Cambio de Contraseña -->
                 <div class="cuenta-tabla-container">
-                    <form class="form-contenedor-perfil">
+                    <form id="form-cambiar-password" class="form-contenedor-perfil">
                         
                         <div class="form-grupo-perfil">
                             <label>Contraseña antigua</label>
-                            <input type="password" id="pass-antigua" placeholder="Ingresa tu contraseña actual">
+                            <input type="password" id="pass-antigua" placeholder="Ingresa tu contraseña actual" required>
                         </div>
 
                         <div class="form-grupo-perfil">
                             <label>Contraseña nueva</label>
-                            <input type="password" id="pass-nueva" placeholder="Ingresa tu nueva contraseña">
+                            <input type="password" id="pass-nueva" placeholder="Ingresa tu nueva contraseña" required>
                         </div>
 
                         <div class="form-grupo-perfil">
                             <label>Confirmar contraseña nueva</label>
-                            <input type="password" id="pass-confirmar" placeholder="Repite tu nueva contraseña">
+                            <input type="password" id="pass-confirmar" placeholder="Repite tu nueva contraseña" required>
                         </div>
 
                         <div>
-                            <button type="button" class="btn-guardar-perfil">Actualizar Contraseña</button>
+                            <button type="submit" class="btn-guardar-perfil">Actualizar Contraseña</button>
                         </div>
 
                     </form>
@@ -133,6 +135,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/contraseña-nueva.js"></script>
 </body>
 
 </html>

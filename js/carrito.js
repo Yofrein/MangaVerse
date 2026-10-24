@@ -54,7 +54,76 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 3. CONTROL DE MODALES DE PAGO
+    // 3. APLICAR CÓDIGO DE DESCUENTO
+    // ==========================================
+    const inputCupon = document.getElementById('codigo-descuento');
+    const btnAplicarCupon = document.querySelector('.btn-aplicar-cupon');
+
+    if (btnAplicarCupon && inputCupon) {
+        btnAplicarCupon.addEventListener('click', () => {
+            const codigoIngresado = inputCupon.value.toUpperCase().trim();
+            if (!codigoIngresado) {
+                alert("Por favor, ingresa un código de descuento.");
+                return;
+            }
+
+            const cuponesGuardados = JSON.parse(localStorage.getItem('cuponesMangaVerse')) || [];
+            const cuponEncontrado = cuponesGuardados.find(c => c.codigo === codigoIngresado);
+
+            if (!cuponEncontrado) {
+                alert("El código de descuento ingresado no existe.");
+                return;
+            }
+
+            if (cuponEncontrado.estado !== "Activo") {
+                alert("Este cupón se encuentra expirado o inactivo.");
+                return;
+            }
+
+            const hoy = new Date().toISOString().split('T')[0];
+            if (cuponEncontrado.inicio && hoy < cuponEncontrado.inicio) {
+                alert(`Este cupón aún no está vigente. Comienza el ${cuponEncontrado.inicio}.`);
+                return;
+            }
+            if (cuponEncontrado.vencimiento && hoy > cuponEncontrado.vencimiento) {
+                alert("Lo sentimos, este cupón ya ha expirado.");
+                return;
+            }
+
+            let descuentoVal = 0;
+            let tipoVal = null;
+
+            const textoDesc = cuponEncontrado.descuento.toLowerCase();
+            if (textoDesc.includes('%')) {
+                const matchPorc = textoDesc.match(/(\d+)/);
+                if (matchPorc) {
+                    descuentoVal = parseInt(matchPorc[0]);
+                    tipoVal = 'porcentaje';
+                }
+            } else {
+                const matchMonto = textoDesc.replace(/\./g, '').match(/(\d+)/);
+                if (matchMonto) {
+                    descuentoVal = parseInt(matchMonto[0]);
+                    tipoVal = 'monto';
+                }
+            }
+
+            const datosCupon = {
+                codigo: cuponEncontrado.codigo,
+                valor: descuentoVal,
+                tipo: tipoVal
+            };
+            localStorage.setItem('cuponActivoMangaVerse', JSON.stringify(datosCupon));
+
+            alert(`¡Cupón "${cuponEncontrado.codigo}" aplicado con éxito!`);
+            if (inputCupon) inputCupon.value = cuponEncontrado.codigo;
+
+            actualizarTotales();
+        });
+    }
+
+    // ==========================================
+    // 4. CONTROL DE PAGO, STOCK, PEDIDOS Y REDIRECCIÓN
     // ==========================================
     const btnPago = document.getElementById('btn-pagar');
     const mensajePago = document.getElementById('mensaje-pago');
@@ -70,14 +139,76 @@ document.addEventListener('DOMContentLoaded', () => {
             if (carritoActual.length === 0) {
                 if (modalVacio) modalVacio.classList.remove('oculto');
             } else {
+                // A. Descontar stock en productosMangaVerse
+                let productosInventario = JSON.parse(localStorage.getItem('productosMangaVerse')) || [];
+                carritoActual.forEach(itemCarrito => {
+                    const productoInv = productosInventario.find(p => p.titulo === itemCarrito.nombre);
+                    if (productoInv) {
+                        productoInv.stock -= itemCarrito.cantidad;
+                        if (productoInv.stock < 0) productoInv.stock = 0;
+                    }
+                });
+                localStorage.setItem('productosMangaVerse', JSON.stringify(productosInventario));
+
+                // B. Calcular totales finales para el registro
+                let subtotal = carritoActual.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+                let envio = subtotal > 0 ? 3000 : 0;
+                let total = subtotal + envio;
+                let montoDescuento = 0;
+
+                const cuponActivo = JSON.parse(localStorage.getItem('cuponActivoMangaVerse'));
+                if (cuponActivo && cuponActivo.valor > 0) {
+                    if (cuponActivo.tipo === 'porcentaje') {
+                        montoDescuento = subtotal * (cuponActivo.valor / 100);
+                        total -= montoDescuento;
+                    } else if (cuponActivo.tipo === 'monto') {
+                        montoDescuento = cuponActivo.valor;
+                        total -= montoDescuento;
+                    }
+                }
+                if (total < 0) total = 0;
+
+                // C. Registrar el pedido en pedidosMangaVerse con ID Autoincremental
+                const usuarioActivo = localStorage.getItem('usuarioMangaVerse') || 'Invitado';
+                let pedidosGuardados = JSON.parse(localStorage.getItem('pedidosMangaVerse')) || [];
+                
+                // ID Autoincremental (empezando desde 0 y aumentando de 1 en 1)
+                const siguienteId = pedidosGuardados.length;
+                const idPedidoFormateado = `#${siguienteId}`;
+
+                const nuevoPedido = {
+                    id: idPedidoFormateado,
+                    usuario: usuarioActivo,
+                    productos: carritoActual,
+                    subtotal: subtotal,
+                    envio: envio,
+                    descuento: Math.round(montoDescuento),
+                    total: Math.round(total),
+                    fecha: new Date().toLocaleDateString('es-CL'),
+                    estado: "Completado"
+                };
+
+                pedidosGuardados.push(nuevoPedido);
+                localStorage.setItem('pedidosMangaVerse', JSON.stringify(pedidosGuardados));
+
+                // D. Mostrar modal de éxito y limpiar carrito/cupón
                 if (mensajePago) {
+                    const contenidoModal = mensajePago.querySelector('.modal-contenido');
+                    if (contenidoModal) {
+                        contenidoModal.innerHTML = `
+                            <h3>¡Pago realizado con éxito!</h3>
+                            <p>Stock actualizado y pedido registrado. Redirigiendo...</p>
+                        `;
+                    }
+
                     mensajePago.classList.remove('oculto');
 
+                    localStorage.removeItem('carritoMangaVerse'); 
+                    localStorage.removeItem('cuponActivoMangaVerse'); 
+
                     setTimeout(() => {
-                        mensajePago.classList.add('oculto');
-                        localStorage.removeItem('carritoMangaVerse'); 
-                        renderizarTablaCarrito(); 
-                    }, 3500);
+                        window.location.href = 'compra-exitosa.html';
+                    }, 2000);
                 }
             }
         });
@@ -99,6 +230,12 @@ function renderizarTablaCarrito() {
 
     let carrito = JSON.parse(localStorage.getItem('carritoMangaVerse')) || [];
     tablaCuerpo.innerHTML = '';
+
+    const cuponGuardado = JSON.parse(localStorage.getItem('cuponActivoMangaVerse'));
+    const inputCupon = document.getElementById('codigo-descuento');
+    if (cuponGuardado && inputCupon && !inputCupon.value) {
+        inputCupon.value = cuponGuardado.codigo;
+    }
 
     if (carrito.length === 0) {
         tablaCuerpo.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 25px; color: #444;">Tu carrito está vacío.</td></tr>`;
@@ -130,12 +267,8 @@ function renderizarTablaCarrito() {
 
     actualizarTotales();
 
-    // ==========================================
-    // EVENTOS DE BOTONES: SUMAR, RESTAR Y ELIMINAR
-    // ==========================================
     let carritoActual = JSON.parse(localStorage.getItem('carritoMangaVerse')) || [];
 
-    // Botones sumar (+)
     document.querySelectorAll('.btn-sumar').forEach(btn => {
         btn.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
@@ -145,15 +278,12 @@ function renderizarTablaCarrito() {
         });
     });
 
-    // Botones restar (-)
     document.querySelectorAll('.btn-restar').forEach(btn => {
         btn.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
             if (carritoActual[index].cantidad > 1) {
                 carritoActual[index].cantidad -= 1;
             } else {
-                // Si llega a 1 y presiona restar, podemos eliminar el producto o dejarlo en 1. 
-                // Aquí lo eliminamos si baja de 1, o puedes omitir el splice si prefieres que el mínimo sea 1.
                 carritoActual.splice(index, 1);
             }
             localStorage.setItem('carritoMangaVerse', JSON.stringify(carritoActual));
@@ -161,7 +291,6 @@ function renderizarTablaCarrito() {
         });
     });
 
-    // Botones eliminar fila completa
     document.querySelectorAll('.btn-eliminar').forEach(btn => {
         btn.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
@@ -173,14 +302,13 @@ function renderizarTablaCarrito() {
 }
 
 // ==========================================
-// FUNCIÓN DE CÁLCULO DE TOTALES
+// FUNCIÓN DE CÁLCULO DE TOTALES Y DESCUENTO
 // ==========================================
 function actualizarTotales() {
     let subtotal = 0;
 
     const filasRestantes = document.querySelectorAll('.tabla-carrito tbody tr');
     filasRestantes.forEach(fila => {
-        // Ignoramos la fila de "carrito vacío" si existe
         if (fila.querySelector('.btn-eliminar')) {
             const celdaPrecio = fila.children[2] ? fila.children[2].textContent : "$0";
             const precioNumero = parseInt(celdaPrecio.replace('$', '').replace(/\./g, '')) || 0;
@@ -189,19 +317,36 @@ function actualizarTotales() {
     });
 
     const envio = subtotal > 0 ? 3000 : 0;
-    const total = subtotal + envio;
+    let total = subtotal + envio;
+    let montoDescuento = 0;
+
+    const cuponActivo = JSON.parse(localStorage.getItem('cuponActivoMangaVerse'));
+
+    if (cuponActivo && cuponActivo.valor > 0) {
+        if (cuponActivo.tipo === 'porcentaje') {
+            montoDescuento = subtotal * (cuponActivo.valor / 100);
+            total -= montoDescuento;
+        } else if (cuponActivo.tipo === 'monto') {
+            montoDescuento = cuponActivo.valor;
+            total -= montoDescuento;
+        }
+    }
+
+    if (total < 0) total = 0;
 
     const subtotalEl = document.getElementById('resumen-subtotal');
     const envioEl = document.getElementById('resumen-envio');
+    const descuentoEl = document.getElementById('resumen-descuento');
     const totalEl = document.getElementById('resumen-total');
 
     if (subtotalEl) subtotalEl.textContent = `$${subtotal.toLocaleString('es-CL')}`;
     if (envioEl) envioEl.textContent = `$${envio.toLocaleString('es-CL')}`;
-    if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-CL')}`;
+    if (descuentoEl) descuentoEl.textContent = `-$${Math.round(montoDescuento).toLocaleString('es-CL')}`;
+    if (totalEl) totalEl.textContent = `$${Math.round(total).toLocaleString('es-CL')}`;
 }
 
 // ==========================================
-// FUNCIÓN PARA MOSTRAR TU TOAST NOTIFICATION
+// FUNCIÓN PARA TOAST NOTIFICATION
 // ==========================================
 function mostrarNotificacion(nombreProducto) {
     const toast = document.getElementById('toast-notificacion');

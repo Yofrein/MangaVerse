@@ -77,39 +77,41 @@
 
                 <div class="cuenta-header-seccion">
                     <h2>Detalles de tu cuenta</h2>
-                    <p>Actualiza tu información personal y datos de contacto.</p>
+                    <p>Información de tu perfil personal y datos de contacto.</p>
+                    <!-- Contenedor para alertas dinámicas -->
+                    <div id="alerta-box" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 6px; font-weight: bold; text-align: center;"></div>
                 </div>
 
                 <div class="cuenta-tabla-container">
-                    <form class="form-contenedor-perfil">
+                    <form id="form-actualizar-cuenta" class="form-contenedor-perfil">
 
                         <div class="form-grupo-perfil">
                             <label>Nombre</label>
-                            <input type="text" id="cuenta-nombre" value="Cristóbal">
+                            <input type="text" id="cuenta-nombre" disabled>
                         </div>
 
                         <div class="form-grupo-perfil">
                             <label>Apellido</label>
-                            <input type="text" id="cuenta-apellido" placeholder="Tu apellido">
+                            <input type="text" id="cuenta-apellido" disabled>
                         </div>
 
                         <div class="form-grupo-perfil">
                             <label>Nombre de usuario</label>
-                            <input type="text" id="cuenta-usuario" value="Cris" disabled>
+                            <input type="text" id="cuenta-usuario" required>
                         </div>
 
                         <div class="form-grupo-perfil">
                             <label>Correo electrónico</label>
-                            <input type="email" id="cuenta-correo" value="cristobal@mangaverse.cl">
+                            <input type="email" id="cuenta-correo" required>
                         </div>
 
                         <div class="form-grupo-perfil">
                             <label>Fecha de nacimiento</label>
-                            <input type="date" id="cuenta-fecha">
+                            <input type="date" id="cuenta-fecha" disabled>
                         </div>
 
                         <div>
-                            <button type="button" class="btn-guardar-perfil">Guardar Cambios</button>
+                            <button type="submit" class="btn-guardar-perfil">Guardar Cambios</button>
                         </div>
 
                     </form>
@@ -142,6 +144,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/cuenta.js"></script>
 </body>
 
 </html>
