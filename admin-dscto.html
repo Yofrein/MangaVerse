@@ -29,7 +29,7 @@
                 <li><a href="quienes-somos.html">Quienes somos</a></li>
 
                 <div class="search-box">
-                    <input type="text" placeholder="Buscar cupón..." class="search-input">
+                    <input type="text" placeholder="Buscar manga..." class="search-input">
                     <button type="submit" class="search-btn">
                         <img src="img/Buscador.png" alt="#" class="search-btn">
                     </button>
@@ -69,7 +69,8 @@
                     <li><a href="admin-pedidos.html">Pedidos Recientes</a></li>
                     <li><a href="admin-dscto.html" class="activo">Cupones y Descuentos</a></li>
                     <li><a href="admin-clientes.html">Clientes Registrados</a></li>
-                    <li><a href="index.html" class="cerrar-sesion">Salir al sitio</a></li>
+                    <li><a href="index.html">Salir al sitio</a></li>
+                    <li><a href="#" id="btn-cerrar-sesion" class="cerrar-sesion">Cerrar sesión</a></li>
                 </ul>
             </aside>
 
@@ -83,7 +84,7 @@
                 <div class="admin-tabla-container">
                     <div class="tabla-acciones-superior">
                         <h3>Listado de Cupones</h3>
-                        <button class="btn-nuevo-producto">+ Crear Nuevo Cupón</button>
+                        <button type="button" id="btn-crear-cupon" class="btn-nuevo-producto">Crear codigo dscto</button>
                     </div>
 
                     <table class="tabla-admin-inventario">
@@ -91,42 +92,13 @@
                             <tr>
                                 <th>Código</th>
                                 <th>Descuento</th>
-                                <th>Vencimiento</th>
+                                <th>Vigencia (Inicio - Vencimiento)</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>MANGA10</strong></td>
-                                <td>10% de rebaja</td>
-                                <td>31/12/2026</td>
-                                <td><span style="color: #27ae60; font-weight: bold;">Activo</span></td>
-                                <td>
-                                    <button class="btn-accion editar">Editar</button>
-                                    <button class="btn-accion eliminar">Desactivar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>VERANO2026</strong></td>
-                                <td>$3.000 (Envío gratis)</td>
-                                <td>28/02/2026</td>
-                                <td><span style="color: #27ae60; font-weight: bold;">Activo</span></td>
-                                <td>
-                                    <button class="btn-accion editar">Editar</button>
-                                    <button class="btn-accion eliminar">Desactivar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>OTAKU5AR</strong></td>
-                                <td>15% de rebaja</td>
-                                <td>15/10/2026</td>
-                                <td><span style="color: #c0392b; font-weight: bold;">Expirado</span></td>
-                                <td>
-                                    <button class="btn-accion editar">Editar</button>
-                                    <button class="btn-accion eliminar">Eliminar</button>
-                                </td>
-                            </tr>
+                        <tbody id="tabla-cupones-body">
+                            <!-- Los cupones se cargarán dinámicamente -->
                         </tbody>
                     </table>
                 </div>
@@ -134,6 +106,35 @@
 
         </div>
     </main>
+
+    <!-- Modal para Crear Nuevo Cupón -->
+    <div id="modal-cupon" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Crear Nuevo Cupón</h3>
+            <form id="form-crear-cupon">
+                <div class="modal-form-grupo">
+                    <label>Código del Cupón</label>
+                    <input type="text" id="input-codigo" placeholder="Ej: ANIVERSARIO" required>
+                </div>
+                <div class="modal-form-grupo">
+                    <label>Descuento</label>
+                    <input type="text" id="input-descuento" placeholder="Ej: 20% de rebaja o $5.000" required>
+                </div>
+                <div class="modal-form-grupo">
+                    <label>Fecha de Inicio</label>
+                    <input type="date" id="input-inicio" required>
+                </div>
+                <div class="modal-form-grupo" style="margin-bottom: 20px;">
+                    <label>Fecha de Vencimiento</label>
+                    <input type="date" id="input-vencimiento" required>
+                </div>
+                <div class="modal-acciones">
+                    <button type="button" id="btn-cancelar-modal" class="btn-accion eliminar">Cancelar</button>
+                    <button type="submit" class="btn-nuevo-producto">Guardar Cupón</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <footer>
         <div class="contenedor-footer">
@@ -158,6 +159,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/admin-dscto.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,6 @@
-// Función global para mostrar alertas elegantes en los formularios
+// ==========================================
+// UTILIDAD GLOBAL: Alertas en Formularios
+// ==========================================
 function mostrarAlertaFormulario(mensaje, esExito = false) {
     const alertaBox = document.getElementById('alerta-box');
     if (alertaBox) {
@@ -10,11 +12,33 @@ function mostrarAlertaFormulario(mensaje, esExito = false) {
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ==========================================
-    // 0. INICIALIZAR USUARIO ADMINISTRADOR POR DEFECTO
-    // ==========================================
-    const cuentasGuardadasAdminCheck = JSON.parse(localStorage.getItem('cuentasMangaVerse')) || [];
-    const existeAdmin = cuentasGuardadasAdminCheck.some(c => c.usuario === "admin");
+    // 0. Inicializar usuario administrador por defecto
+    inicializarAdminPorDefecto();
+
+    // 1. Configurar sesión activa y enlaces superiores según rol
+    gestionarSesionYNavegacion();
+
+    // 3. Login
+    inicializarFormularioLogin();
+
+    // 4. Cerrar sesión
+    inicializarCerrarSesion();
+
+    // 5. Carrito / Notificaciones Toast
+    inicializarNotificacionesCarrito();
+
+    // 6. Buscador global
+    inicializarBuscadorGlobal();
+
+});
+
+// ==========================================
+// FUNCIONES GLOBALES
+// ==========================================
+
+function inicializarAdminPorDefecto() {
+    const cuentasGuardadas = JSON.parse(localStorage.getItem('cuentasMangaVerse')) || [];
+    const existeAdmin = cuentasGuardadas.some(c => c.usuario === "admin");
     
     if (!existeAdmin) {
         const cuentaAdmin = {
@@ -24,28 +48,40 @@ document.addEventListener('DOMContentLoaded', function() {
             pass: "admin123",
             correo: "admin@mangaverse.cl",
             fecha: "2026-01-01",
-            rol: "admin" // Identificador clave para el panel
+            rol: "admin"
         };
-        cuentasGuardadasAdminCheck.push(cuentaAdmin);
-        localStorage.setItem('cuentasMangaVerse', JSON.stringify(cuentasGuardadasAdminCheck));
+        cuentasGuardadas.push(cuentaAdmin);
+        localStorage.setItem('cuentasMangaVerse', JSON.stringify(cuentasGuardadas));
     }
+}
 
-    // 1. Ver si hay una sesión activa con la clave exacta
-    const usuarioActivo = localStorage.getItem('usuarioMangaVerse');
+function gestionarSesionYNavegacion() {
+    const usuarioActivoNombre = localStorage.getItem('usuarioMangaVerse');
 
-    if (usuarioActivo) {
-        const enlacesUser = document.querySelectorAll('a[href="mi-cuenta.html"], a[href="login.html"]');
+    if (usuarioActivoNombre) {
+        const cuentasGuardadas = JSON.parse(localStorage.getItem('cuentasMangaVerse')) || [];
+        const cuentaUnica = JSON.parse(localStorage.getItem('cuentaRegistrada'));
+
+        let usuarioActualObj = cuentasGuardadas.find(c => c.usuario === usuarioActivoNombre);
+        if (!usuarioActualObj && cuentaUnica && cuentaUnica.usuario === usuarioActivoNombre) {
+            usuarioActualObj = cuentaUnica;
+        }
+
+        const enlacesUser = document.querySelectorAll('a[href="mi-cuenta.html"], a[href="login.html"], a[href="admin.html"]');
+        
         enlacesUser.forEach(enlace => {
-            enlace.href = 'mi-cuenta.html';
-            
-            // Cambia el texto "Mi cuenta" al nombre del usuario
             const textoSpan = enlace.querySelector('span');
             if (textoSpan) {
-                textoSpan.textContent = usuarioActivo;
+                textoSpan.textContent = usuarioActivoNombre;
+            }
+
+            if (usuarioActualObj && usuarioActualObj.rol === 'admin') {
+                enlace.href = 'admin.html';
+            } else {
+                enlace.href = 'mi-cuenta.html';
             }
         });
     } else {
-        // Si no hay sesión, asegura que el icono User.png se vea blanco
         const iconosUser = document.querySelectorAll('.nav-icon');
         iconosUser.forEach(icono => {
             if (icono.src.includes('User.png')) {
@@ -53,145 +89,86 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+}
 
-    // 2. REGISTRO: Captura completa de campos, validación de contraseñas y alertas bonitas
-    const formRegistro = document.getElementById('form-registro');
-    if (formRegistro) {
-        formRegistro.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const nombre = document.getElementById('reg-nombre') ? document.getElementById('reg-nombre').value.trim() : "";
-            const apellido = document.getElementById('reg-apellido') ? document.getElementById('reg-apellido').value.trim() : "";
-            const usuario = document.getElementById('reg-usuario').value.trim();
-            const correo = document.getElementById('reg-correo').value.trim();
-            const fecha = document.getElementById('reg-fecha') ? document.getElementById('reg-fecha').value : "";
-            
-            // Detecta ambos nombres de ID por si acaso
-            const elPass = document.getElementById('reg-contrasena') || document.getElementById('reg-password');
-            const elConfirmPass = document.getElementById('reg-confirmar-contrasena') || document.getElementById('reg-confirm-password');
-
-            const pass = elPass ? elPass.value : "";
-            const confirmPass = elConfirmPass ? elConfirmPass.value : pass;
-
-            // Validación: Las contraseñas deben coincidir
-            if (pass !== confirmPass) {
-                mostrarAlertaFormulario("Las contraseñas no coinciden. Por favor inténtalo de nuevo.");
-                return;
-            }
-
-            // Obtener cuentas previas para comprobar si el usuario ya existe
-            const cuentasGuardadas = JSON.parse(localStorage.getItem('cuentasMangaVerse')) || [];
-            const cuentaUnica = JSON.parse(localStorage.getItem('cuentaRegistrada'));
-
-            const usuarioExiste = cuentasGuardadas.some(c => c.usuario.toLowerCase() === usuario.toLowerCase()) ||
-                                  (cuentaUnica && cuentaUnica.usuario.toLowerCase() === usuario.toLowerCase());
-
-            if (usuarioExiste) {
-                mostrarAlertaFormulario("El nombre de usuario ya está registrado. Por favor elige otro.");
-                return;
-            }
-
-            // Crear objeto de la nueva cuenta (por defecto rol cliente)
-            const nuevaCuenta = {
-                nombre: nombre,
-                apellido: apellido,
-                usuario: usuario,
-                pass: pass,
-                correo: correo,
-                fecha: fecha,
-                rol: "cliente"
-            };
-
-            // Guardar datos en localStorage
-            localStorage.setItem('cuentaRegistrada', JSON.stringify(nuevaCuenta));
-            cuentasGuardadas.push(nuevaCuenta);
-            localStorage.setItem('cuentasMangaVerse', JSON.stringify(cuentasGuardadas));
-
-            // Feedback visual exitoso y redirección suave
-            mostrarAlertaFormulario("¡Cuenta creada con éxito! Redirigiendo al inicio de sesión...", true);
-            setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 1500);
-        });
-    }
-
-    // 3. LOGIN: Valida e inicia sesión verificando si es cliente o admin
+function inicializarFormularioLogin() {
     const formLogin = document.getElementById('form-login');
-    if (formLogin) {
-        formLogin.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombreIngresado = document.getElementById('usuario').value.trim();
-            const passwordIngresada = document.getElementById('password').value;
+    if (!formLogin) return;
 
-            const cuentasGuardadas = JSON.parse(localStorage.getItem('cuentasMangaVerse')) || [];
-            const cuentaUnica = JSON.parse(localStorage.getItem('cuentaRegistrada'));
+    formLogin.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombreIngresado = document.getElementById('usuario').value.trim();
+        const passwordIngresada = document.getElementById('password').value;
 
-            // Buscamos coincidencia en la lista general de cuentas
-            let usuarioEncontrado = cuentasGuardadas.find(c => c.usuario === nombreIngresado && c.pass === passwordIngresada);
+        const cuentasGuardadas = JSON.parse(localStorage.getItem('cuentasMangaVerse')) || [];
+        const cuentaUnica = JSON.parse(localStorage.getItem('cuentaRegistrada'));
 
-            // Resguardo por si acaso está en la cuenta única individual
-            if (!usuarioEncontrado && cuentaUnica && cuentaUnica.usuario === nombreIngresado && cuentaUnica.pass === passwordIngresada) {
-                usuarioEncontrado = cuentaUnica;
-            }
+        let usuarioEncontrado = cuentasGuardadas.find(c => c.usuario === nombreIngresado && c.pass === passwordIngresada);
 
-            if (!usuarioEncontrado) {
-                mostrarAlertaFormulario("Usuario o contraseña incorrectos. Intenta nuevamente.");
-                return;
-            }
+        if (!usuarioEncontrado && cuentaUnica && cuentaUnica.usuario === nombreIngresado && cuentaUnica.pass === passwordIngresada) {
+            usuarioEncontrado = cuentaUnica;
+        }
 
-            // Guardamos la sesión activa en el navegador
-            localStorage.setItem('usuarioMangaVerse', usuarioEncontrado.usuario);
+        if (!usuarioEncontrado) {
+            mostrarAlertaFormulario("Usuario o contraseña incorrectos. Intenta nuevamente.");
+            return;
+        }
 
-            // Redirección según el rol del usuario
-            if (usuarioEncontrado.rol === 'admin') {
-                window.location.href = 'admin.html';
-            } else {
-                window.location.href = 'mi-cuenta.html';
-            }
-        });
-    }
+        localStorage.setItem('usuarioMangaVerse', usuarioEncontrado.usuario);
 
-    // 4. CERRAR SESIÓN: Elimina la clave y regresa al login
+        if (usuarioEncontrado.rol === 'admin') {
+            window.location.href = 'admin.html';
+        } else {
+            window.location.href = 'mi-cuenta.html';
+        }
+    });
+}
+
+function inicializarCerrarSesion() {
     const btnCerrarSesion = document.getElementById('btn-cerrar-sesion');
-    if (btnCerrarSesion) {
-        btnCerrarSesion.addEventListener('click', function() {
-            localStorage.removeItem('usuarioMangaVerse');
-            window.location.href = 'login.html';
-        });
-    }
+    if (!btnCerrarSesion) return;
 
-    // 5. NOTIFICACIÓN FLOTANTE (Toast) AL AÑADIR AL CARRITO
+    btnCerrarSesion.addEventListener('click', function(e) {
+        e.preventDefault();
+        localStorage.removeItem('usuarioMangaVerse');
+        window.location.href = 'login.html';
+    });
+}
+
+function inicializarNotificacionesCarrito() {
     const botonesCarrito = document.querySelectorAll('.anadir-carrito, .anadir-carrito-chico');
     const toast = document.getElementById('toast-notificacion');
     const toastNombre = document.getElementById('toast-producto-nombre');
     let toastTimeout;
 
-    if (botonesCarrito.length > 0 && toast) {
-        botonesCarrito.forEach(boton => {
-            boton.addEventListener('click', function() {
-                const tarjeta = this.closest('.recuadro-mangas, .recuadro-mangas-masvendidos, .card-manga');
-                
-                if (tarjeta) {
-                    const elementoTitulo = tarjeta.querySelector('h1') || tarjeta.querySelector('h3');
-                    
-                    if (elementoTitulo) {
-                        toastNombre.textContent = elementoTitulo.textContent.trim();
-                    }
+    if (botonesCarrito.length === 0 || !toast) return;
+
+    botonesCarrito.forEach(boton => {
+        boton.addEventListener('click', function() {
+            const tarjeta = this.closest('.recuadro-mangas, .recuadro-mangas-masvendidos, .card-manga');
+            
+            if (tarjeta) {
+                const elementoTitulo = tarjeta.querySelector('h1') || tarjeta.querySelector('h3');
+                if (elementoTitulo && toastNombre) {
+                    toastNombre.textContent = elementoTitulo.textContent.trim();
                 }
+            }
 
-                toast.classList.add('mostrar');
-                clearTimeout(toastTimeout);
+            toast.classList.add('mostrar');
+            clearTimeout(toastTimeout);
 
-                toastTimeout = setTimeout(() => {
-                    toast.classList.remove('mostrar');
-                }, 3000);
-            });
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('mostrar');
+            }, 3000);
         });
-    }
+    });
+}
 
-    // 6. BUSCADOR FUNCIONAL
+function inicializarBuscadorGlobal() {
     const inputsBusqueda = document.querySelectorAll('.search-input');
     const botonesBusqueda = document.querySelectorAll('.search-btn');
+
+    if (inputsBusqueda.length === 0) return;
 
     function filtrarCatalogo(termino) {
         const tarjetas = document.querySelectorAll('.card-manga, .recuadro-mangas, .recuadro-mangas-masvendidos');
@@ -257,4 +234,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         filtrarCatalogo(busquedaURL);
     }
-});
+}

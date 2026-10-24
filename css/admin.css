@@ -196,3 +196,121 @@
 .btn-accion.eliminar:hover {
     background-color: #b52b2b;
 }
+
+/* ===== Estilos para el Modal / Pop-up ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    color: #333;
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #222;
+}
+
+/* ===== Estilos para el Modal / Pop-up de Cupones ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    color: #333;
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #222;
+}
+
+.modal-form-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.modal-form-grupo label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.modal-form-grupo input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-acciones {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.modal-acciones button {
+    padding: 8px 14px;
+}
+
+/* ===== Clases de Estado para Cupones ===== */
+.estado-cupon {
+    font-weight: bold;
+}
+
+.estado-activo {
+    color: #27ae60; /* Verde */
+}
+
+.estado-expirado {
+    color: #c0392b; /* Rojo */
+}
+
+/* ===== Clases para Pedidos Recientes ===== */
+.tabla-vacia {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.estado-pedido-completado {
+    color: #27ae60; /* Verde */
+    font-weight: bold;
+}

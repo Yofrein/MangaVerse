@@ -29,7 +29,7 @@
                 <li><a href="quienes-somos.html">Quienes somos</a></li>
 
                 <div class="search-box">
-                    <input type="text" placeholder="Buscar cliente..." class="search-input">
+                    <input type="text" placeholder="Buscar manga..." class="search-input">
                     <button type="submit" class="search-btn">
                         <img src="img/Buscador.png" alt="#" class="search-btn">
                     </button>
@@ -64,12 +64,13 @@
             <aside class="panel-menu-admin">
                 <h1>Menú Admin</h1>
                 <ul class="admin-links-menu">
-                    <li><a href="admin.html" >Dashboard</a></li>
+                    <li><a href="admin.html">Dashboard</a></li>
                     <li><a href="admin-productos.html">Gestión de Productos</a></li>
                     <li><a href="admin-pedidos.html">Pedidos Recientes</a></li>
                     <li><a href="admin-dscto.html">Cupones y Descuentos</a></li>
                     <li><a href="admin-clientes.html" class="activo">Clientes Registrados</a></li>
-                    <li><a href="index.html" class="cerrar-sesion">Salir al sitio</a></li>
+                    <li><a href="index.html">Salir al sitio</a></li>
+                    <li><a href="#" id="btn-cerrar-sesion" class="cerrar-sesion">Cerrar sesión</a></li>
                 </ul>
             </aside>
 
@@ -91,36 +92,8 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>#01</td>
-                                <td>Cristóbal (Cris)</td>
-                                <td>cris@mangaverse.cl</td>
-                                <td><span style="color: rgb(128, 44, 206); font-weight: bold;">Administrador</span></td>
-                                <td>
-                                    <button class="btn-accion editar">Ver Perfil</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#02</td>
-                                <td>Ignacio Valenzuela</td>
-                                <td>ignacio.valenzuela@duocuc.cl</td>
-                                <td>Cliente</td>
-                                <td>
-                                    <button class="btn-accion editar">Ver Perfil</button>
-                                    <button class="btn-accion eliminar">Bloquear</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#03</td>
-                                <td>Fernanda Morales</td>
-                                <td>fernanda.morales@gmail.com</td>
-                                <td>Cliente</td>
-                                <td>
-                                    <button class="btn-accion editar">Ver Perfil</button>
-                                    <button class="btn-accion eliminar">Bloquear</button>
-                                </td>
-                            </tr>
+                        <tbody id="tabla-clientes-body">
+                            <!-- Los clientes se cargarán dinámicamente desde el JS -->
                         </tbody>
                     </table>
                 </div>
@@ -152,6 +125,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/admin-clientes.js"></script>
 </body>
 
 </html>

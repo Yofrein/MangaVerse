@@ -331,3 +331,9 @@
         font-size: 200%;
     }
 }
+
+/* ===== Estilo para la línea de descuento aplicado ===== */
+.resumen-linea-descuento {
+    color: #27ae60;
+    font-weight: bold;
+}
