@@ -314,3 +314,38 @@
     color: #27ae60; /* Verde */
     font-weight: bold;
 }
+
+/* ===== Clases de Estado para Pedidos Admin ===== */
+.estado-en-camino {
+    color: #27ae60; /* Verde */
+    font-weight: bold;
+}
+
+.estado-preparando {
+    color: #e67e22; /* Naranja */
+    font-weight: bold;
+}
+
+.estado-pendiente {
+    color: #c0392b; /* Rojo */
+    font-weight: bold;
+}
+
+.tabla-vacia {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.estado-pedido-completado {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* ===== Clase para miniaturas de mangas en tablas admin ===== */
+.img-tabla-manga {
+    width: 40px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 4px;
+}

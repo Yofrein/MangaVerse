@@ -259,3 +259,23 @@
 .estado-preparando {
     color: #e67e22; /* Naranja */
 }
+
+/* ===== Estilo para Alertas Dinámicas en Cambio de Contraseña ===== */
+.alerta-dinamica {
+    display: none;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ===== Estilo para Alerta Dinámica en Mi Cuenta ===== */
+.alerta-dinamica {
+    display: none;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
